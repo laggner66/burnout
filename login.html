@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Kurs-Login | Burnout-Prävention Online-Kurs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #D97642 0%, #8B4513 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .login-container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 50px 40px;
+            text-align: center;
+            animation: slideUp 0.5s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .login-logo {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        h1 {
+            color: #D97642;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #D97642;
+            padding: 15px;
+            margin-bottom: 30px;
+            text-align: left;
+            border-radius: 8px;
+        }
+        
+        .info-box p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .info-box strong {
+            color: #D97642;
+        }
+        
+        .login-form {
+            margin-bottom: 30px;
+        }
+        
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 1.2rem;
+        }
+        
+        .login-input {
+            width: 100%;
+            padding: 18px 18px 18px 50px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+            background: #f8f9fa;
+        }
+        
+        .login-input:focus {
+            outline: none;
+            border-color: #D97642;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(217, 118, 66, 0.1);
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #D97642 0%, #c46638 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(217, 118, 66, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(217, 118, 66, 0.4);
+        }
+        
+        .login-button:active {
+            transform: translateY(0);
+        }
+        
+        .login-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .error-message {
+            background: #fee;
+            border-left: 4px solid #e74c3c;
+            color: #c0392b;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+            text-align: left;
+            animation: shake 0.5s;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .success-message {
+            background: #d4edda;
+            border-left: 4px solid #27ae60;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+            animation: slideUp 0.3s;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        .help-section {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .help-section p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+        
+        .help-link {
+            color: #D97642;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .help-link:hover {
+            color: #c46638;
+            text-decoration: underline;
+        }
+        
+        .benefits {
+            text-align: left;
+            margin-top: 30px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        
+        .benefits h3 {
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .benefits ul {
+            list-style: none;
+        }
+        
+        .benefits li {
+            color: #555;
+            padding: 8px 0;
+            display: flex;
+            align-items: start;
+            gap: 10px;
+        }
+        
+        .benefits li::before {
+            content: "✓";
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .spinner {
+            display: none;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading .spinner {
+            display: block;
+        }
+        
+        .loading .button-text {
+            display: none;
+        }
+        
+        @media (max-width: 600px) {
+            .login-container {
+                padding: 40px 25px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-logo">🎓</div>
+        <h1>Burnout-Präventionskurs</h1>
+        <p class="subtitle">Willkommen zurück! Bitte melden Sie sich mit Ihrem Zugangs-Code an.</p>
+        
+        <div class="info-box">
+            <p><i class="fas fa-info-circle" style="color: #D97642; margin-right: 8px;"></i> <strong>Sie haben den Zugangs-Code per E-Mail erhalten</strong> nach Ihrer Kursanmeldung. Bitte überprüfen Sie auch Ihren Spam-Ordner.</p>
+        </div>
+        
+        <form class="login-form" onsubmit="pruefeZugang(event)">
+            <div class="input-group">
+                <i class="fas fa-key input-icon"></i>
+                <input 
+                    type="password" 
+                    id="zugangscode" 
+                    class="login-input" 
+                    placeholder="Geben Sie Ihren Zugangs-Code ein"
+                    autocomplete="off"
+                    required
+                    autofocus
+                >
+            </div>
+            
+            <button type="submit" class="login-button" id="loginButton">
+                <span class="button-text"><i class="fas fa-sign-in-alt"></i> Zum Kurs</span>
+                <div class="spinner"></div>
+            </button>
+        </form>
+        
+        <div class="error-message" id="fehler">
+            <strong><i class="fas fa-exclamation-triangle"></i> Falscher Zugangs-Code</strong><br>
+            Bitte überprüfen Sie Ihre Eingabe. Der Code unterscheidet zwischen Groß- und Kleinschreibung.
+        </div>
+        
+        <div class="success-message" id="erfolg">
+            <strong><i class="fas fa-check-circle"></i> Zugang gewährt!</strong><br>
+            Sie werden zum Kurs weitergeleitet...
+        </div>
+        
+        <div class="benefits">
+            <h3><i class="fas fa-graduation-cap"></i> Ihr Kurs umfasst:</h3>
+            <ul>
+                <li>10 umfassende Module zur Burnout-Prävention</li>
+                <li>Interaktive Tests & wissenschaftlich fundierte Übungen</li>
+                <li>Praktische Checklisten für den Alltag</li>
+                <li>5 bewährte Zeitmanagement-Methoden</li>
+                <li>Lebenslanger Zugriff auf alle Inhalte</li>
+            </ul>
+        </div>
+        
+        <div class="help-section">
+            <p>❓ Keinen Code erhalten oder Probleme beim Login?</p>
+            <a href="mailto:info@professionelle-hilfe.com" class="help-link">
+                <i class="fas fa-envelope"></i> Kontaktieren Sie uns
+            </a>
+            <p style="margin-top: 15px;">
+                <a href="https://www.professionelle-hilfe.com" class="help-link">
+                    <i class="fas fa-home"></i> Zurück zur Hauptseite
+                </a>
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // ⚠️ WICHTIG: Ändern Sie diesen Code nur hier an einer Stelle!
+        // Dieser Code muss mit dem Code in Ihrer GetResponse-E-Mail übereinstimmen
+        const ZUGANGS_CODE = "BPK2025-ThomasLaggner-Premium!7x9";
+        
+        function pruefeZugang(event) {
+            event.preventDefault(); // Verhindert Form-Submit
+            
+            const eingabe = document.getElementById('zugangscode').value;
+            const fehlerBox = document.getElementById('fehler');
+            const erfolgBox = document.getElementById('erfolg');
+            const button = document.getElementById('loginButton');
+            
+            // Verstecke vorherige Meldungen
+            fehlerBox.classList.remove('show');
+            erfolgBox.classList.remove('show');
+            
+            // Zeige Loading-Status
+            button.classList.add('loading');
+            button.disabled = true;
+            
+            // Simuliere kurze Überprüfung (für bessere UX)
+            setTimeout(() => {
+                if (eingabe === ZUGANGS_CODE) {
+                    // ✅ ZUGANG GEWÄHRT
+                    erfolgBox.classList.add('show');
+                    sessionStorage.setItem('burnout_kurs_zugriff', 'aktiv');
+                    
+                    // Weiterleitung nach 1 Sekunde
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                    
+                } else {
+                    // ❌ FALSCHER CODE
+                    fehlerBox.classList.add('show');
+                    button.classList.remove('loading');
+                    button.disabled = false;
+                    
+                    // Eingabefeld leeren und fokussieren
+                    document.getElementById('zugangscode').value = '';
+                    document.getElementById('zugangscode').focus();
+                    
+                    // Fehlerbox nach 5 Sekunden ausblenden
+                    setTimeout(() => {
+                        fehlerBox.classList.remove('show');
+                    }, 5000);
+                }
+            }, 800);
+        }
+        
+        // Prüfe ob bereits eingeloggt (sollte nicht vorkommen, aber sicher ist sicher)
+        if (sessionStorage.getItem('burnout_kurs_zugriff') === 'aktiv') {
+            window.location.href = 'index.html';
+        }
+        
+        // Enter-Taste funktioniert (wird durch Form-Submit bereits abgedeckt, aber zur Sicherheit)
+        document.getElementById('zugangscode').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                document.querySelector('.login-button').click();
+            }
+        });
+    </script>
+</body>
+</html>

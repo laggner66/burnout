@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login-Schutz Installation | Burnout-Präventionskurs</title>
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #D97642;
+            border-bottom: 3px solid #D97642;
+            padding-bottom: 15px;
+        }
+        h2 {
+            color: #333;
+            margin-top: 30px;
+        }
+        .status {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .success {
+            background: #e8f5e9;
+            border-left-color: #4CAF50;
+        }
+        .error {
+            background: #ffebee;
+            border-left-color: #f44336;
+        }
+        .warning {
+            background: #fff3e0;
+            border-left-color: #ff9800;
+        }
+        pre {
+            background: #263238;
+            color: #aed581;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .file-list {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .file-list h4 {
+            margin-top: 0;
+            color: #D97642;
+        }
+        .file-item {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            font-family: monospace;
+            font-size: 13px;
+        }
+        .file-item:last-child {
+            border-bottom: none;
+        }
+        .file-item.completed {
+            color: #4CAF50;
+        }
+        .file-item.completed::before {
+            content: "✓ ";
+            font-weight: bold;
+        }
+        .btn {
+            background: #D97642;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        .btn:hover {
+            background: #c46638;
+        }
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: monospace;
+            font-size: 13px;
+        }
+        #progress-container {
+            display: none;
+            margin: 20px 0;
+        }
+        #progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        #progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            width: 0%;
+            transition: width 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+        }
+        .step {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            background: #f5f5f5;
+            margin: 0 5px;
+            border-radius: 8px;
+            position: relative;
+        }
+        .step.active {
+            background: #e3f2fd;
+            border: 2px solid #2196F3;
+        }
+        .step.completed {
+            background: #e8f5e9;
+            border: 2px solid #4CAF50;
+        }
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 50%;
+            background: #ddd;
+            color: #666;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .step.active .step-number {
+            background: #2196F3;
+            color: white;
+        }
+        .step.completed .step-number {
+            background: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Login-Schutz Installation</h1>
+        <p>Dieses Tool fügt automatisch den Login-Schutz zu allen Kursseiten hinzu.</p>
+        
+        <div class="status warning">
+            <strong>⚠️ WICHTIG VOR DEM START:</strong>
+            <ol style="margin: 10px 0; padding-left: 20px;">
+                <li>Erstellen Sie ein <strong>Backup</strong> aller Dateien</li>
+                <li>Stellen Sie sicher, dass <code>js/login-check.js</code> hochgeladen wurde</li>
+                <li>Stellen Sie sicher, dass <code>login.html</code> im Root-Verzeichnis ist</li>
+            </ol>
+        </div>
+
+        <div class="step-indicator">
+            <div class="step" id="step1">
+                <div class="step-number">1</div>
+                <div>Vorbereitung</div>
+            </div>
+            <div class="step" id="step2">
+                <div class="step-number">2</div>
+                <div>Dateien scannen</div>
+            </div>
+            <div class="step" id="step3">
+                <div class="step-number">3</div>
+                <div>Code einfügen</div>
+            </div>
+            <div class="step" id="step4">
+                <div class="step-number">4</div>
+                <div>Abgeschlossen</div>
+            </div>
+        </div>
+
+        <div id="progress-container">
+            <div id="progress-bar">
+                <div id="progress-fill">0%</div>
+            </div>
+        </div>
+
+        <div class="file-list">
+            <h4>📂 Zu aktualisierende Dateien (28):</h4>
+            <div id="file-list-content">
+                <div class="file-item" data-file="modul1.html">modul1.html</div>
+                <div class="file-item" data-file="modul2.html">modul2.html</div>
+                <div class="file-item" data-file="modul3.html">modul3.html</div>
+                <div class="file-item" data-file="modul4.html">modul4.html</div>
+                <div class="file-item" data-file="modul5.html">modul5.html</div>
+                <div class="file-item" data-file="modul6.html">modul6.html</div>
+                <div class="file-item" data-file="modul7.html">modul7.html</div>
+                <div class="file-item" data-file="modul8.html">modul8.html</div>
+                <div class="file-item" data-file="modul9.html">modul9.html</div>
+                <div class="file-item" data-file="modul10.html">modul10.html</div>
+                <div class="file-item" data-file="checkliste-warnsignale.html">checkliste-warnsignale.html</div>
+                <div class="file-item" data-file="checkliste-selbstfuersorge.html">checkliste-selbstfuersorge.html</div>
+                <div class="file-item" data-file="checkliste-wochenreflexion.html">checkliste-wochenreflexion.html</div>
+                <div class="file-item" data-file="checkliste-notfallplan.html">checkliste-notfallplan.html</div>
+                <div class="file-item" data-file="checkliste-aufschieberitis.html">checkliste-aufschieberitis.html</div>
+                <div class="file-item" data-file="innere-antreiber-test.html">innere-antreiber-test.html</div>
+                <div class="file-item" data-file="innere-antreiber-test-fritz.html">innere-antreiber-test-fritz.html</div>
+                <div class="file-item" data-file="innere-antreiber-profile.html">innere-antreiber-profile.html</div>
+                <div class="file-item" data-file="innere-antreiber-fallbeispiel.html">innere-antreiber-fallbeispiel.html</div>
+                <div class="file-item" data-file="werte-kompass.html">werte-kompass.html</div>
+                <div class="file-item" data-file="werte-konflikte.html">werte-konflikte.html</div>
+                <div class="file-item" data-file="werte-quadrat.html">werte-quadrat.html</div>
+                <div class="file-item" data-file="zeitmanagement-methoden.html">zeitmanagement-methoden.html</div>
+                <div class="file-item" data-file="progressive-muskelentspannung.html">progressive-muskelentspannung.html</div>
+                <div class="file-item" data-file="meditation-yoga.html">meditation-yoga.html</div>
+                <div class="file-item" data-file="atemtechniken-vagusnerv.html">atemtechniken-vagusnerv.html</div>
+                <div class="file-item" data-file="literatur.html">literatur.html</div>
+                <div class="file-item" data-file="wissenschaftliche-artikel.html">wissenschaftliche-artikel.html</div>
+            </div>
+        </div>
+
+        <div class="status" id="status-box">
+            <strong>📋 Anleitung:</strong>
+            <p>Diese Installation ist <strong>semi-automatisch</strong>. Das Script generiert den Code, den Sie in jede Datei einfügen müssen.</p>
+        </div>
+
+        <h2>📝 Einzufügender Code:</h2>
+        <p>Kopieren Sie folgenden Code und fügen Sie ihn in <strong>jede der oben genannten Dateien</strong> ein,<br>
+        direkt <strong>VOR dem <code>&lt;/body&gt;</code>-Tag</strong>:</p>
+        
+        <pre><code>&lt;!-- Login-Schutz --&gt;
+&lt;script src="js/login-check.js"&gt;&lt;/script&gt;
+</code></pre>
+
+        <h2>🎯 Genaue Position:</h2>
+        <p>Der Code sollte eingefügt werden:</p>
+        
+        <div class="code-block">
+            ... andere Inhalte ...<br>
+            <br>
+            &lt;script src="js/main.js"&gt;&lt;/script&gt;<br>
+            &lt;script src="js/module.js"&gt;&lt;/script&gt;<br>
+            <span style="background: #ffeb3b; color: #000; padding: 2px 6px; border-radius: 3px;">
+                <strong>&lt;!-- Login-Schutz --&gt;</strong><br>
+                <strong>&lt;script src="js/login-check.js"&gt;&lt;/script&gt;</strong>
+            </span><br>
+            <br>
+        &lt;/body&gt;<br>
+        &lt;/html&gt;
+        </div>
+
+        <h2>✅ Checkliste für manuelle Installation:</h2>
+        <div class="status">
+            <label><input type="checkbox"> 1. Backup aller Dateien erstellt</label><br>
+            <label><input type="checkbox"> 2. <code>login.html</code> hochgeladen</label><br>
+            <label><input type="checkbox"> 3. <code>js/login-check.js</code> hochgeladen</label><br>
+            <label><input type="checkbox"> 4. Code in alle 28 Dateien eingefügt</label><br>
+            <label><input type="checkbox"> 5. Login-Seite getestet (mit richtigem Code)</label><br>
+            <label><input type="checkbox"> 6. Login-Seite getestet (mit falschem Code)</label><br>
+            <label><input type="checkbox"> 7. Verschiedene Kursseiten getestet</label><br>
+        </div>
+
+        <h2>🧪 Test-Anleitung:</h2>
+        <ol>
+            <li>Öffnen Sie Ihren Kurs: <code>https://burnout.professionelle-hilfe.com</code></li>
+            <li>Sie sollten automatisch zu <code>/login.html</code> weitergeleitet werden</li>
+            <li>Geben Sie einen <strong>falschen Code</strong> ein → Fehlermeldung sollte erscheinen</li>
+            <li>Geben Sie den <strong>richtigen Code</strong> ein: <code>BPK2025-ThomasLaggner-Premium!7x9</code></li>
+            <li>Sie sollten zur Startseite weitergeleitet werden ✅</li>
+            <li>Navigieren Sie zu verschiedenen Modulen → kein erneuter Login nötig ✅</li>
+        </ol>
+
+        <h2>🔧 Alternative: Bulk-Edit mit Find & Replace</h2>
+        <p>Wenn Sie einen Code-Editor wie <strong>VS Code, Sublime Text oder Notepad++</strong> verwenden:</p>
+        <ol>
+            <li>Laden Sie alle 28 Dateien in Ihren Editor</li>
+            <li>Öffnen Sie "Find & Replace" (meist Strg+H)</li>
+            <li><strong>Suchen nach:</strong> <code>&lt;/body&gt;</code></li>
+            <li><strong>Ersetzen durch:</strong>
+                <pre style="font-size: 12px;">&lt;!-- Login-Schutz --&gt;
+&lt;script src="js/login-check.js"&gt;&lt;/script&gt;
+
+&lt;/body&gt;</pre>
+            </li>
+            <li>Klicken Sie auf "Replace All" in allen offenen Dateien</li>
+            <li>Speichern Sie alle Dateien</li>
+            <li>Laden Sie die aktualisierten Dateien per FTP hoch</li>
+        </ol>
+
+        <div class="status success" style="margin-top: 30px;">
+            <strong>✅ Nach erfolgreicher Installation:</strong>
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li>Ihr Kurs ist geschützt</li>
+                <li>Nur Nutzer mit Code können zugreifen</li>
+                <li>Senden Sie den Code per GetResponse an Käufer</li>
+                <li>Diese Installations-Datei kann gelöscht werden</li>
+            </ul>
+        </div>
+
+        <div class="status warning" style="margin-top: 20px;">
+            <strong>💡 Tipp:</strong> Speichern Sie die Datei <code>ZUGANGSSCHUTZ-ANLEITUNG.md</code> für zukünftige Referenz!
+        </div>
+    </div>
+
+    <script>
+        // Diese Seite ist nur eine Anleitung - keine automatische Installation möglich
+        // da JavaScript im Browser keine Dateien auf dem Server bearbeiten kann
+        console.log('Login-Schutz Installations-Anleitung geladen');
+        console.log('Folgen Sie den Schritten oben für die manuelle Installation');
+    </script>
+</body>
+</html>
