@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Das Werte-Quadrat nach Paul Helwig und Schulz von Thun: Jede Tugend braucht eine Schwester-Tugend für gesunde Balance. Praktisches Tool für Werte-Balance.">
+    <meta name="keywords" content="Werte-Quadrat, Schulz von Thun, Paul Helwig, Tugendquadrat, Werte Balance, positive Psychologie, Charakterstärken">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.professionelle-hilfe.com/burnout-kurs/werte-quadrat.html">
+    <title>Das Werte-Quadrat | Balance durch Schwester-Tugenden | Thomas Laggner</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/module.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <style>
+        .value-square {
+            background: white;
+            border: 3px solid var(--primary-color);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        
+        .square-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+            position: relative;
+        }
+        
+        .square-grid::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .square-quadrant {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            padding: 25px;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .square-quadrant:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .quadrant-top-left {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-color: #27ae60;
+        }
+        
+        .quadrant-top-right {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-color: #27ae60;
+        }
+        
+        .quadrant-bottom-left {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border-color: #e74c3c;
+        }
+        
+        .quadrant-bottom-right {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border-color: #e74c3c;
+        }
+        
+        .quadrant-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #666;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .quadrant-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #333;
+            margin: 10px 0;
+        }
+        
+        .quadrant-description {
+            font-size: 0.95rem;
+            color: #666;
+            margin-top: 8px;
+        }
+        
+        .balance-arrow {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .arrow-horizontal {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .example-square {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        
+        .example-square:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .example-square h4 {
+            color: var(--primary-color);
+            margin-top: 0;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .mini-square {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .mini-quadrant {
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .mini-positive {
+            background: #e8f5e9;
+            color: #27ae60;
+        }
+        
+        .mini-negative {
+            background: #ffebee;
+            color: #e74c3c;
+        }
+        
+        .interactive-builder {
+            background: #fff9f0;
+            border: 2px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .value-input-group {
+            margin: 20px 0;
+        }
+        
+        .value-input-group label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .value-input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .value-input-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .generate-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            margin: 20px auto;
+        }
+        
+        .generate-button:hover {
+            background: #c46638;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .your-square {
+            display: none;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .square-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .square-grid::before {
+                display: none;
+            }
+        }
+    </style>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Das Werte-Quadrat: Balance durch Schwester-Tugenden",
+      "description": "Praktischer Leitfaden zum Werte-Quadrat nach Paul Helwig und Schulz von Thun für gesunde Werte-Balance.",
+      "author": {
+        "@type": "Person",
+        "name": "Thomas Laggner",
+        "jobTitle": "Psychotherapeut"
+      },
+      "inLanguage": "de-AT",
+      "isPartOf": {
+        "@type": "Course",
+        "name": "Burnout-Prävention Online-Kurs"
+      }
+    }
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="index.html"><span class="brand-name">Burnout-Prävention</span></a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Kursübersicht</a></li>
+                <li><a href="werte-kompass.html">Werte-Kompass</a></li>
+                <li><a href="https://www.eTermin.net/thomaslaggner" target="_blank" class="btn-etermin-nav"><i class="fas fa-calendar-check"></i> Termin buchen</a></li>
+                <li><a href="https://www.professionelle-hilfe.com" class="btn-primary-nav">Hauptseite</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="module-header">
+        <div class="container">
+            <div class="module-breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Kursübersicht</a>
+                <span>/</span>
+                <a href="modul6.html">Modul 7 & 8</a>
+                <span>/</span>
+                <a href="werte-kompass.html">Werte-Kompass</a>
+                <span>/</span>
+                <span>Werte-Quadrat</span>
+            </div>
+            <h1><i class="fas fa-th"></i> Das Werte-Quadrat</h1>
+            <p class="module-intro">Jede Tugend braucht eine Schwester-Tugend – nach Paul Helwig & Schulz von Thun</p>
+        </div>
+    </section>
+
+    <section class="module-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <article class="main-content">
+                    <div class="content-section">
+                        <h2><i class="fas fa-info-circle"></i> Was ist das Werte-Quadrat?</h2>
+                        
+                        <p>Das <strong>Werte- und Entwicklungsquadrat</strong> wurde von Paul Helwig entwickelt und von <strong>Friedemann Schulz von Thun</strong> weiterentwickelt. Es basiert auf einer zentralen Erkenntnis:</p>
+                        
+                        <div class="info-box" style="background: linear-gradient(135deg, #fff5e6 0%, #ffe8cc 100%);">
+                            <h4><i class="fas fa-quote-left"></i> Die zentrale Weisheit</h4>
+                            <p style="font-size: 1.2rem; font-style: italic; color: #333;">"Jede Tugend braucht eine Schwester-Tugend, sonst wird sie zur Untugend."</p>
+                            <p style="margin-top: 15px;"><strong>Beispiel:</strong> Ordnung ohne Flexibilität wird zu Pedanterie. Flexibilität ohne Ordnung wird zu Chaos.</p>
+                        </div>
+
+                        <p>Das Werte-Quadrat zeigt uns:</p>
+                        <ul>
+                            <li><strong>Positive Werte stehen diagonal zueinander</strong> und ergänzen sich (Schwester-Tugenden)</li>
+                            <li><strong>Übertriebene Werte</strong> führen zu negativen Eigenschaften</li>
+                            <li><strong>Balance zwischen Gegenpolen</strong> ist der Schlüssel zu gesunden Werten</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h2><i class="fas fa-square"></i> Aufbau des Werte-Quadrats</h2>
+                        
+                        <div class="value-square">
+                            <h3 style="text-align: center; color: var(--primary-color); margin-bottom: 30px;">Klassisches Beispiel: Ordnung ↔ Flexibilität</h3>
+                            
+                            <div class="square-grid">
+                                <div class="square-quadrant quadrant-top-left">
+                                    <span class="quadrant-label">Positive Tugend 1</span>
+                                    <div class="quadrant-value">Ordnung</div>
+                                    <p class="quadrant-description">Struktur, Planbarkeit, Zuverlässigkeit</p>
+                                </div>
+                                
+                                <div class="square-quadrant quadrant-top-right">
+                                    <span class="quadrant-label">Positive Tugend 2 (Schwester)</span>
+                                    <div class="quadrant-value">Flexibilität</div>
+                                    <p class="quadrant-description">Anpassungsfähigkeit, Spontaneität, Offenheit</p>
+                                </div>
+                                
+                                <div class="square-quadrant quadrant-bottom-left">
+                                    <span class="quadrant-label">Übertreibung von Tugend 1</span>
+                                    <div class="quadrant-value">Pedanterie</div>
+                                    <p class="quadrant-description">Zwanghaftigkeit, Starrheit, Unflexibilität</p>
+                                </div>
+                                
+                                <div class="square-quadrant quadrant-bottom-right">
+                                    <span class="quadrant-label">Übertreibung von Tugend 2</span>
+                                    <div class="quadrant-value">Chaos</div>
+                                    <p class="quadrant-description">Planlosigkeit, Unzuverlässigkeit, Orientierungslosigkeit</p>
+                                </div>
+                            </div>
+                            
+                            <div style="text-align: center; margin-top: 20px; color: #666; font-style: italic;">
+                                ↕️ Die obere Reihe enthält die positiven Werte (Schwester-Tugenden)<br>
+                                ↕️ Die untere Reihe zeigt die Übertreibungen (Untugenden)
+                            </div>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <h4><i class="fas fa-lightbulb"></i> Die Balance macht's!</h4>
+                            <p>Ein Mensch, der <strong>nur</strong> Ordnung lebt (ohne Flexibilität), wird pedantisch und starr. Ein Mensch, der <strong>nur</strong> Flexibilität lebt (ohne Ordnung), wird chaotisch und unzuverlässig.</p>
+                            <p><strong>Gesund ist die Balance:</strong> Grundsätzlich strukturiert arbeiten (Ordnung), aber bei Bedarf auch spontan reagieren können (Flexibilität).</p>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <h2><i class="fas fa-list"></i> Weitere Werte-Quadrate (Beispiele)</h2>
+                        
+                        <div class="examples-grid">
+                            <div class="example-square">
+                                <h4>Selbstfürsorge ↔ Hilfsbereitschaft</h4>
+                                <div class="mini-square">
+                                    <div class="mini-quadrant mini-positive">Selbstfürsorge<br><small>Grenzen setzen</small></div>
+                                    <div class="mini-quadrant mini-positive">Hilfsbereitschaft<br><small>Für andere da sein</small></div>
+                                    <div class="mini-quadrant mini-negative">Egoismus<br><small>Rücksichtslosigkeit</small></div>
+                                    <div class="mini-quadrant mini-negative">Selbstaufgabe<br><small>Burnout-Risiko</small></div>
+                                </div>
+                            </div>
+
+                            <div class="example-square">
+                                <h4>Ehrlichkeit ↔ Diplomatie</h4>
+                                <div class="mini-square">
+                                    <div class="mini-quadrant mini-positive">Ehrlichkeit<br><small>Authentizität</small></div>
+                                    <div class="mini-quadrant mini-positive">Diplomatie<br><small>Taktgefühl</small></div>
+                                    <div class="mini-quadrant mini-negative">Taktlosigkeit<br><small>Verletzend</small></div>
+                                    <div class="mini-quadrant mini-negative">Unaufrichtigkeit<br><small>Falschheit</small></div>
+                                </div>
+                            </div>
+
+                            <div class="example-square">
+                                <h4>Bescheidenheit ↔ Selbstbewusstsein</h4>
+                                <div class="mini-square">
+                                    <div class="mini-quadrant mini-positive">Bescheidenheit<br><small>Demut</small></div>
+                                    <div class="mini-quadrant mini-positive">Selbstbewusstsein<br><small>Selbstwert</small></div>
+                                    <div class="mini-quadrant mini-negative">Selbstverleugnung<br><small>Unsichtbarkeit</small></div>
+                                    <div class="mini-quadrant mini-negative">Arroganz<br><small>Überheblichkeit</small></div>
+                                </div>
+                            </div>
+
+                            <div class="example-square">
+                                <h4>Vertrauen ↔ Vorsicht</h4>
+                                <div class="mini-square">
+                                    <div class="mini-quadrant mini-positive">Vertrauen<br><small>Offenheit</small></div>
+                                    <div class="mini-quadrant mini-positive">Vorsicht<br><small>Gesunde Skepsis</small></div>
+                                    <div class="mini-quadrant mini-negative">Naivität<br><small>Leichtgläubigkeit</small></div>
+                                    <div class="mini-quadrant mini-negative">Misstrauen<br><small>Paranoia</small></div>
+                                </div>
+                            </div>
+
+                            <div class="example-square">
+                                <h4>Sparsamkeit ↔ Großzügigkeit</h4>
+                                <div class="mini-square">
+                                    <div class="mini-quadrant mini-positive">Sparsamkeit<br><small>Verantwortung</small></div>
+                                    <div class="mini-quadrant mini-positive">Großzügigkeit<br><small>Freigebigkeit</small></div>
+                                    <div class="mini-quadrant mini-negative">Geiz<br><small>Knausrigkeit</small></div>
+                                    <div class="mini-quadrant mini-negative">Verschwendung<br><small>Verantwortungslosigkeit</small></div>
+                                </div>
+                            </div>
+
+                            <div class="example-square">
+                                <h4>Ausdauer ↔ Loslassen</h4>
+                                <div class="mini-square">
+                                    <div class="mini-quadrant mini-positive">Ausdauer<br><small>Durchhaltevermögen</small></div>
+                                    <div class="mini-quadrant mini-positive">Loslassen<br><small>Akzeptanz</small></div>
+                                    <div class="mini-quadrant mini-negative">Verbissenheit<br><small>Sturheit</small></div>
+                                    <div class="mini-quadrant mini-negative">Aufgeben<br><small>Resignation</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <h2><i class="fas fa-tools"></i> Ihr persönliches Werte-Quadrat erstellen</h2>
+                        
+                        <div class="interactive-builder">
+                            <h3 style="color: var(--primary-color); margin-top: 0;">Welcher Wert ist bei Ihnen besonders stark ausgeprägt?</h3>
+                            <p>Wählen Sie einen Ihrer Hauptwerte und finden Sie seine Schwester-Tugend sowie die beiden Übertreibungen.</p>
+                            
+                            <div class="value-input-group">
+                                <label for="main-value"><i class="fas fa-star"></i> Ihr Hauptwert (z.B. "Perfektionismus", "Hilfsbereitschaft", "Selbstständigkeit")</label>
+                                <input type="text" id="main-value" placeholder="Geben Sie Ihren Hauptwert ein...">
+                            </div>
+                            
+                            <div class="value-input-group">
+                                <label for="sister-value"><i class="fas fa-balance-scale"></i> Die Schwester-Tugend (Was würde Balance schaffen?)</label>
+                                <input type="text" id="sister-value" placeholder="z.B. zu Perfektionismus: 'Mut zur Unvollkommenheit'">
+                            </div>
+                            
+                            <div class="value-input-group">
+                                <label for="excess-main"><i class="fas fa-exclamation-triangle"></i> Übertreibung des Hauptwerts (Wozu wird er ohne Balance?)</label>
+                                <input type="text" id="excess-main" placeholder="z.B. zu Perfektionismus: 'Zwanghaftigkeit'">
+                            </div>
+                            
+                            <div class="value-input-group">
+                                <label for="excess-sister"><i class="fas fa-exclamation-triangle"></i> Übertreibung der Schwester-Tugend</label>
+                                <input type="text" id="excess-sister" placeholder="z.B. zu 'Mut zur Unvollkommenheit': 'Schlampigkeit'">
+                            </div>
+                            
+                            <button class="generate-button" onclick="generateSquare()">
+                                <i class="fas fa-magic"></i> Mein Werte-Quadrat erstellen
+                            </button>
+                            
+                            <div id="your-square" class="your-square">
+                                <h4 style="color: var(--primary-color); text-align: center;">Ihr persönliches Werte-Quadrat</h4>
+                                <div class="value-square">
+                                    <div class="square-grid">
+                                        <div class="square-quadrant quadrant-top-left">
+                                            <span class="quadrant-label">Ihr Hauptwert</span>
+                                            <div class="quadrant-value" id="display-main"></div>
+                                        </div>
+                                        
+                                        <div class="square-quadrant quadrant-top-right">
+                                            <span class="quadrant-label">Schwester-Tugend</span>
+                                            <div class="quadrant-value" id="display-sister"></div>
+                                        </div>
+                                        
+                                        <div class="square-quadrant quadrant-bottom-left">
+                                            <span class="quadrant-label">Übertreibung</span>
+                                            <div class="quadrant-value" id="display-excess-main"></div>
+                                        </div>
+                                        
+                                        <div class="square-quadrant quadrant-bottom-right">
+                                            <span class="quadrant-label">Übertreibung</span>
+                                            <div class="quadrant-value" id="display-excess-sister"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-box" style="margin-top: 30px;">
+                            <h4><i class="fas fa-lightbulb"></i> So nutzen Sie Ihr Werte-Quadrat</h4>
+                            <ol>
+                                <li><strong>Selbsterkenntnis:</strong> Erkennen Sie, zu welcher Übertreibung Sie in Stresssituationen tendieren</li>
+                                <li><strong>Balance finden:</strong> Kultivieren Sie bewusst die Schwester-Tugend</li>
+                                <li><strong>Selbstmitgefühl:</strong> Verstehen Sie, dass Übertreibungen aus guten Absichten entstehen</li>
+                                <li><strong>Entwicklung:</strong> Nutzen Sie das Quadrat als Entwicklungs-Kompass</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <h2><i class="fas fa-heart"></i> Bedeutung für Burnout-Prävention</h2>
+                        
+                        <div class="info-box">
+                            <p><strong>Viele Burnout-Betroffene leiden unter übertriebenen Werten:</strong></p>
+                            <ul>
+                                <li>Perfektionismus ohne "Mut zur Unvollkommenheit" → Zwanghaftigkeit</li>
+                                <li>Hilfsbereitschaft ohne Selbstfürsorge → Selbstaufgabe</li>
+                                <li>Pflichtbewusstsein ohne Selbstbestimmung → Fremdbestimmtheit</li>
+                                <li>Stärke ohne Verletzlichkeit → Emotionale Isolation</li>
+                            </ul>
+                            
+                            <p style="margin-top: 20px;"><strong>Das Werte-Quadrat hilft Ihnen:</strong></p>
+                            <ul>
+                                <li>Übertriebene Werte zu erkennen</li>
+                                <li>Die fehlende Balance zu identifizieren</li>
+                                <li>Konkrete Entwicklungsziele zu setzen</li>
+                                <li>Sich selbst mit mehr Mitgefühl zu begegnen</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="module-navigation">
+                        <a href="werte-konflikte.html" class="btn-nav btn-back"><i class="fas fa-arrow-left"></i> Wertekonflikte</a>
+                        <a href="werte-kompass.html" class="btn-nav btn-next">Zurück zum Werte-Kompass <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="sidebar-card">
+                        <h3>💡 Auf dieser Seite</h3>
+                        <ul class="sidebar-links">
+                            <li><a href="#konzept">Was ist das Werte-Quadrat?</a></li>
+                            <li><a href="#aufbau">Aufbau</a></li>
+                            <li><a href="#beispiele">Beispiele</a></li>
+                            <li><a href="#eigenes">Eigenes Quadrat erstellen</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-card cta-card">
+                        <h3>Werte-Balance entwickeln</h3>
+                        <p>Gemeinsam finden wir Ihre gesunde Balance!</p>
+                        <a href="https://www.eTermin.net/thomaslaggner" target="_blank" class="btn-cta"><i class="fas fa-calendar-alt"></i> Termin buchen</a>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3>🔗 Werte-Ressourcen</h3>
+                        <ul class="sidebar-links">
+                            <li><a href="werte-kompass.html">Werte-Kompass</a></li>
+                            <li><a href="werte-konflikte.html">Wertekonflikte lösen</a></li>
+                            <li><a href="modul6.html">Zurück zu Modul 7 & 8</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-compact">
+        <div class="container">
+            <p>&copy; 2025 Thomas Laggner - Professionelle Hilfe | <a href="https://www.professionelle-hilfe.com">www.professionelle-hilfe.com</a></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function generateSquare() {
+            const mainValue = document.getElementById('main-value').value.trim();
+            const sisterValue = document.getElementById('sister-value').value.trim();
+            const excessMain = document.getElementById('excess-main').value.trim();
+            const excessSister = document.getElementById('excess-sister').value.trim();
+            
+            if (!mainValue || !sisterValue || !excessMain || !excessSister) {
+                alert('Bitte füllen Sie alle vier Felder aus!');
+                return;
+            }
+            
+            document.getElementById('display-main').textContent = mainValue;
+            document.getElementById('display-sister').textContent = sisterValue;
+            document.getElementById('display-excess-main').textContent = excessMain;
+            document.getElementById('display-excess-sister').textContent = excessSister;
+            
+            document.getElementById('your-square').style.display = 'block';
+            
+            // Scroll zu Ergebnis
+            document.getElementById('your-square').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Speichern
+            localStorage.setItem('werte_quadrat_main', mainValue);
+            localStorage.setItem('werte_quadrat_sister', sisterValue);
+            localStorage.setItem('werte_quadrat_excess_main', excessMain);
+            localStorage.setItem('werte_quadrat_excess_sister', excessSister);
+        }
+        
+        // Lade gespeicherte Werte
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedMain = localStorage.getItem('werte_quadrat_main');
+            const savedSister = localStorage.getItem('werte_quadrat_sister');
+            const savedExcessMain = localStorage.getItem('werte_quadrat_excess_main');
+            const savedExcessSister = localStorage.getItem('werte_quadrat_excess_sister');
+            
+            if (savedMain) {
+                document.getElementById('main-value').value = savedMain;
+                document.getElementById('sister-value').value = savedSister;
+                document.getElementById('excess-main').value = savedExcessMain;
+                document.getElementById('excess-sister').value = savedExcessSister;
+                
+                // Zeige gespeichertes Quadrat
+                document.getElementById('display-main').textContent = savedMain;
+                document.getElementById('display-sister').textContent = savedSister;
+                document.getElementById('display-excess-main').textContent = savedExcessMain;
+                document.getElementById('display-excess-sister').textContent = savedExcessSister;
+                document.getElementById('your-square').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

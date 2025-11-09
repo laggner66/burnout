@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    <!-- Hauptseite -->
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/index.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Module 1-10 -->
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/modul1.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/modul2.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/modul3.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/modul4.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/modul5.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/modul6.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/modul7.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/modul8.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/modul9.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/modul10.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Entspannungstechniken -->
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/progressive-muskelentspannung.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/meditation-yoga.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/atemtechniken-vagusnerv.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Checklisten -->
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/checkliste-warnsignale.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/checkliste-selbstfuersorge.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/checkliste-wochenreflexion.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/checkliste-notfallplan.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/checkliste-aufschieberitis.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Literatur & Forschung -->
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/literatur.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/wissenschaftliche-artikel.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Innere Antreiber Ressourcen (Modul 5) -->
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/innere-antreiber-test.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/innere-antreiber-test-fritz.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/innere-antreiber-profile.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/innere-antreiber-fallbeispiel.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Werte-Arbeit Ressourcen (Modul 6) -->
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/werte-kompass.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/werte-konflikte.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/werte-quadrat.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Zeitmanagement Ressourcen (Modul 7) -->
+    <url>
+        <loc>https://www.professionelle-hilfe.com/burnout-kurs/zeitmanagement-methoden.html</loc>
+        <lastmod>2025-01-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+</urlset>

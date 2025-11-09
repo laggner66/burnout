@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Innere Antreiber Test nach Taibi Kahler: Finden Sie heraus, welche der 5 Antreiber (Sei perfekt, Beeil dich, Streng dich an, Mach es allen recht, Sei stark) Sie am stärksten prägen. Interaktiver Selbsttest.">
+    <meta name="keywords" content="Innere Antreiber Test, Taibi Kahler Test, Transaktionsanalyse Selbsttest, Sei perfekt, innere Antreiber Fragebogen, Persönlichkeitstest Burnout">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.professionelle-hilfe.com/burnout-kurs/innere-antreiber-test.html">
+    <title>Innere Antreiber Test: Welcher Antreiber prägt Sie? | Thomas Laggner</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/module.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .test-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .question-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .question-number {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .question-text {
+            font-size: 1.05rem;
+            color: #333;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .answer-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .answer-option {
+            flex: 1;
+            min-width: 150px;
+        }
+        .answer-option label {
+            display: block;
+            padding: 0.8rem 1rem;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .answer-option input[type="radio"] {
+            display: none;
+        }
+        .answer-option input[type="radio"]:checked + label {
+            background: var(--primary-light);
+            border-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        .answer-option label:hover {
+            border-color: var(--primary-color);
+            background: #fff3e6;
+        }
+        .bothers-checkbox {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        .bothers-checkbox label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+        .bothers-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        .results-container {
+            margin-top: 3rem;
+            display: none;
+        }
+        .result-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--primary-color);
+        }
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .result-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+        .result-title {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin: 0;
+        }
+        .result-score {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .progress-bar {
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transition: width 0.5s ease;
+        }
+        .test-instructions {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        .btn-submit {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            margin: 2rem auto;
+            transition: all 0.3s;
+        }
+        .btn-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(217, 118, 66, 0.3);
+        }
+        .btn-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Innere Antreiber Test nach Taibi Kahler",
+      "description": "Interaktiver Test zur Identifikation der 5 inneren Antreiber: Sei perfekt, Beeil dich, Streng dich an, Mach es allen recht, Sei stark.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+      "inLanguage": "de-AT"
+    }
+    </script>
+</head>
+<body itemscope itemtype="https://schema.org/Article">
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="index.html"><span class="brand-name">Burnout-Prävention</span></a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Kursübersicht</a></li>
+                <li><a href="https://www.eTermin.net/thomaslaggner" target="_blank" class="btn-etermin-nav"><i class="fas fa-calendar-check"></i> Termin buchen</a></li>
+                <li><a href="https://www.professionelle-hilfe.com" class="btn-primary-nav">Hauptseite</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="module-header">
+        <div class="container">
+            <div class="module-breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Kursübersicht</a>
+                <span>/</span>
+                <a href="modul5.html">Modul 5 & 6</a>
+                <span>/</span>
+                <span>Innere Antreiber Test</span>
+            </div>
+            <h1><i class="fas fa-clipboard-list"></i> Innere Antreiber Test</h1>
+            <p class="module-intro">Entdecken Sie Ihre persönlichen Antreiber nach dem Modell von Taibi Kahler</p>
+        </div>
+    </section>
+
+    <section class="module-content">
+        <div class="container">
+            <div class="test-container">
+                
+                <div class="test-instructions">
+                    <h3><i class="fas fa-info-circle"></i> Anleitung</h3>
+                    <p><strong>Schritt 1:</strong> Lesen Sie jede Aussage durch und entscheiden Sie sich für eine der drei Wahlmöglichkeiten:</p>
+                    <ul>
+                        <li><strong>"Stimmt!"</strong> = 1 Punkt</li>
+                        <li><strong>"Stimmt in etwa"</strong> = 0,5 Punkte</li>
+                        <li><strong>"Stimmt nicht"</strong> = 0 Punkte</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Schritt 2:</strong> Markieren Sie zusätzlich "Das stört mich!", wenn Sie den Wunsch verspüren, Ihre Haltung zu verändern (+ 1 Punkt).</p>
+                    <p style="margin-top: 1rem;"><strong>Schritt 3:</strong> Am Ende erhalten Sie eine Auswertung, welche Antreiber bei Ihnen am stärksten ausgeprägt sind.</p>
+                </div>
+
+                <form id="antreiberTest">
+                    <!-- Die 25 Fragen werden hier per JavaScript generiert -->
+                </form>
+
+                <button type="button" class="btn-submit" id="submitTest">Test auswerten</button>
+
+                <div class="results-container" id="resultsContainer">
+                    <h2><i class="fas fa-chart-bar"></i> Ihre Ergebnisse</h2>
+                    <p style="margin-bottom: 2rem;">Die Auswertung zeigt, welche inneren Antreiber bei Ihnen am stärksten ausgeprägt sind:</p>
+                    <div id="resultsContent"></div>
+
+                    <div class="alert-box info" style="margin-top: 2rem;">
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <h4>Was bedeutet das Ergebnis?</h4>
+                            <p>Ein hoher Wert bedeutet nicht automatisch, dass dieser Antreiber problematisch ist. Antreiber können uns unterstützen – sie werden erst dann zum Problem, wenn sie uns unter Stress in automatische, starre Verhaltensmuster zwingen.</p>
+                            <p style="margin-top: 1rem;">Besonders wichtig ist die Spalte "Das stört mich!" – hier zeigt sich Ihr Veränderungswunsch.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-section" style="margin-top: 2rem;">
+                        <h3><i class="fas fa-arrow-right"></i> Nächste Schritte</h3>
+                        <div class="dimensions-grid">
+                            <div class="dimension-card">
+                                <div class="dimension-icon"><i class="fas fa-book-open"></i></div>
+                                <h4>Antreiber verstehen</h4>
+                                <p>Lernen Sie mehr über Ihre dominanten Antreiber</p>
+                                <a href="innere-antreiber-profile.html" style="color: var(--primary-color); font-weight: bold;">→ Zu den Profilen</a>
+                            </div>
+                            <div class="dimension-card">
+                                <div class="dimension-icon"><i class="fas fa-balance-scale"></i></div>
+                                <h4>Erlauber entwickeln</h4>
+                                <p>Entdecken Sie gesunde Alternativen zu Ihren Antreibern</p>
+                                <a href="modul5.html#erlauber" style="color: var(--primary-color); font-weight: bold;">→ Zu den Erlaubern</a>
+                            </div>
+                            <div class="dimension-card">
+                                <div class="dimension-icon"><i class="fas fa-user-md"></i></div>
+                                <h4>Persönliche Beratung</h4>
+                                <p>Arbeiten Sie individuell an Ihren Antreibern</p>
+                                <a href="https://www.eTermin.net/thomaslaggner" target="_blank" style="color: var(--primary-color); font-weight: bold;">→ Termin buchen</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-compact">
+        <div class="container">
+            <p>&copy; 2025 Thomas Laggner - Professionelle Hilfe | <a href="https://www.professionelle-hilfe.com">www.professionelle-hilfe.com</a></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Die 25 Testfragen (5 pro Antreiber)
+        const questions = [
+            {id: 1, text: "Ich muss jederzeit alleine zurechtkommen!", driver: "stark"},
+            {id: 2, text: "Ich darf keine Fehler machen!", driver: "perfekt"},
+            {id: 3, text: "„Nein-Sagen" fällt mir schwer!", driver: "recht"},
+            {id: 4, text: "Ich muss mich beeilen!", driver: "beeil"},
+            {id: 5, text: "Ich muss mich anstrengen!", driver: "streng"},
+            {id: 6, text: "Ich muss auf das Schlimmste gefasst sein!", driver: "stark"},
+            {id: 7, text: "Ich muss alles richtig machen!", driver: "perfekt"},
+            {id: 8, text: "Ich möchte es allen recht machen!", driver: "recht"},
+            {id: 9, text: "Ich habe nie genug Zeit!", driver: "beeil"},
+            {id: 10, text: "Ohne Fleiß kein Preis!", driver: "streng"},
+            {id: 11, text: "Ich muss stets gerüstet sein!", driver: "stark"},
+            {id: 12, text: "Ich achte sehr auf Details!", driver: "perfekt"},
+            {id: 13, text: "Ich vermeide Konflikte!", driver: "recht"},
+            {id: 14, text: "Ich mache gerne mehrere Dinge gleichzeitig!", driver: "beeil"},
+            {id: 15, text: "Leicht fällt mir nichts!", driver: "streng"},
+            {id: 16, text: "Ich zeige keine Schwäche!", driver: "stark"},
+            {id: 17, text: "Ich kontrolliere alles mehrfach!", driver: "perfekt"},
+            {id: 18, text: "Ich stelle meine Bedürfnisse zurück!", driver: "recht"},
+            {id: 19, text: "Ich bin immer unter Zeitdruck!", driver: "beeil"},
+            {id: 20, text: "Ich muss mich durchbeißen!", driver: "streng"},
+            {id: 21, text: "Ich bitte ungern um Hilfe!", driver: "stark"},
+            {id: 22, text: "Ich bin sehr selbstkritisch!", driver: "perfekt"},
+            {id: 23, text: "Ich möchte gemocht werden!", driver: "recht"},
+            {id: 24, text: "Ich bin oft hektisch!", driver: "beeil"},
+            {id: 25, text: "Ich gebe nie auf!", driver: "streng"}
+        ];
+
+        const driverNames = {
+            stark: "Sei stark!",
+            perfekt: "Sei perfekt!",
+            recht: "Mach es allen recht!",
+            beeil: "Beeil dich!",
+            streng: "Streng dich an!"
+        };
+
+        const driverIcons = {
+            stark: "fa-shield-alt",
+            perfekt: "fa-star",
+            recht: "fa-heart",
+            beeil: "fa-clock",
+            streng: "fa-dumbbell"
+        };
+
+        // Formular generieren
+        const form = document.getElementById('antreiberTest');
+        questions.forEach(q => {
+            const card = document.createElement('div');
+            card.className = 'question-card';
+            card.innerHTML = `
+                <div class="question-number">Frage ${q.id} von 25</div>
+                <div class="question-text">${q.text}</div>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" name="q${q.id}" value="1" id="q${q.id}_ja">
+                        <label for="q${q.id}_ja">Stimmt!</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q${q.id}" value="0.5" id="q${q.id}_etwa">
+                        <label for="q${q.id}_etwa">Stimmt in etwa</label>
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q${q.id}" value="0" id="q${q.id}_nein">
+                        <label for="q${q.id}_nein">Stimmt nicht</label>
+                    </div>
+                </div>
+                <div class="bothers-checkbox">
+                    <label>
+                        <input type="checkbox" name="bothers${q.id}" value="1">
+                        <span>Das stört mich! (Ich möchte diese Haltung verändern)</span>
+                    </label>
+                </div>
+            `;
+            form.appendChild(card);
+        });
+
+        // Test auswerten
+        document.getElementById('submitTest').addEventListener('click', function() {
+            const scores = {
+                stark: 0,
+                perfekt: 0,
+                recht: 0,
+                beeil: 0,
+                streng: 0
+            };
+
+            let allAnswered = true;
+
+            questions.forEach(q => {
+                const answer = document.querySelector(`input[name="q${q.id}"]:checked`);
+                if (!answer) {
+                    allAnswered = false;
+                    return;
+                }
+                
+                let score = parseFloat(answer.value);
+                const bothers = document.querySelector(`input[name="bothers${q.id}"]`);
+                if (bothers && bothers.checked) {
+                    score += 1;
+                }
+                
+                scores[q.driver] += score;
+            });
+
+            if (!allAnswered) {
+                alert('Bitte beantworten Sie alle Fragen, bevor Sie den Test auswerten.');
+                return;
+            }
+
+            // Ergebnisse anzeigen
+            displayResults(scores);
+            
+            // Zu den Ergebnissen scrollen
+            document.getElementById('resultsContainer').scrollIntoView({ behavior: 'smooth' });
+            
+            // In LocalStorage speichern
+            localStorage.setItem('antreiber_test_results', JSON.stringify(scores));
+        });
+
+        function displayResults(scores) {
+            const resultsContainer = document.getElementById('resultsContainer');
+            const resultsContent = document.getElementById('resultsContent');
+            
+            // Nach Punktzahl sortieren
+            const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+            const maxScore = 10; // Maximum 10 Punkte pro Antreiber (5 Fragen × 2 Punkte)
+            
+            resultsContent.innerHTML = '';
+            
+            sorted.forEach(([driver, score], index) => {
+                const percentage = (score / maxScore) * 100;
+                const card = document.createElement('div');
+                card.className = 'result-card';
+                card.innerHTML = `
+                    <div class="result-header">
+                        <div class="result-icon"><i class="fas ${driverIcons[driver]}"></i></div>
+                        <div style="flex: 1;">
+                            <h3 class="result-title">${driverNames[driver]}</h3>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${percentage}%"></div>
+                            </div>
+                        </div>
+                        <div class="result-score">${score.toFixed(1)}</div>
+                    </div>
+                    <p style="color: #666; margin-top: 0.5rem;">
+                        ${index === 0 ? '⭐ Ihr stärkster Antreiber' : `Rang ${index + 1}`}
+                    </p>
+                `;
+                resultsContent.appendChild(card);
+            });
+            
+            resultsContainer.style.display = 'block';
+        }
+
+        // Lade gespeicherte Ergebnisse (falls vorhanden)
+        window.addEventListener('load', function() {
+            const saved = localStorage.getItem('antreiber_test_results');
+            if (saved) {
+                const scores = JSON.parse(saved);
+                // Zeige kurzen Hinweis
+                console.log('Frühere Testergebnisse gefunden');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="5 bewährte Zeitmanagement-Methoden für Burnout-Prävention: ABC-Analyse, ALPEN-Methode, Eisenhower-Matrix, Pareto-Prinzip und Pomodoro-Technik. Praktische Anleitungen und Tools.">
+    <meta name="keywords" content="Zeitmanagement Methoden, ABC-Analyse, ALPEN-Methode, Eisenhower-Matrix, Pareto-Prinzip, Pomodoro-Technik, Selbstmanagement, Burnout-Prävention">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.professionelle-hilfe.com/burnout-kurs/zeitmanagement-methoden.html">
+    <title>5 Zeitmanagement-Methoden | ABC, ALPEN, Eisenhower, Pareto, Pomodoro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/module.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <style>
+        .method-card {
+            background: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .method-card h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .method-number {
+            background: var(--primary-color);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        
+        .method-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .priority-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .priority-table th,
+        .priority-table td {
+            border: 2px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .priority-table th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .priority-a { border-left: 5px solid #e74c3c; }
+        .priority-b { border-left: 5px solid #f39c12; }
+        .priority-c { border-left: 5px solid #95a5a6; }
+        
+        .eisenhower-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .eisenhower-quadrant {
+            border: 3px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 180px;
+        }
+        
+        .quadrant-a {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+            border-color: #e74c3c;
+        }
+        
+        .quadrant-b {
+            background: linear-gradient(135deg, #fff9f0 0%, #ffe8cc 100%);
+            border-color: #f39c12;
+        }
+        
+        .quadrant-c {
+            background: linear-gradient(135deg, #f0f8ff 0%, #d4e6f9 100%);
+            border-color: #3498db;
+        }
+        
+        .quadrant-d {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            border-color: #95a5a6;
+        }
+        
+        .quadrant-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .quadrant-badge {
+            background: white;
+            color: #333;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .quadrant-action {
+            background: rgba(255,255,255,0.7);
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .alpen-steps {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .alpen-steps li {
+            background: #f8f9fa;
+            border-left: 5px solid var(--primary-color);
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            border-radius: 5px;
+        }
+        
+        .alpen-steps strong {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .pareto-visual {
+            background: linear-gradient(to right, var(--primary-color) 20%, #e0e0e0 20%);
+            height: 60px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            margin: 20px 0;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .pareto-left {
+            flex: 0 0 20%;
+            text-align: center;
+        }
+        
+        .pareto-right {
+            flex: 0 0 80%;
+            text-align: center;
+            color: #333;
+        }
+        
+        .pomodoro-cycle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+        
+        .pomodoro-block {
+            text-align: center;
+        }
+        
+        .pomodoro-timer {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #e74c3c;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 0 auto 8px;
+        }
+        
+        .pomodoro-break {
+            background: #27ae60;
+        }
+        
+        .pomodoro-long-break {
+            background: #3498db;
+            width: 100px;
+            height: 100px;
+            font-size: 1.2rem;
+        }
+        
+        .pomodoro-arrow {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .example-box {
+            background: #f0f7ff;
+            border-left: 5px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .example-box h4 {
+            color: #3498db;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tip-box {
+            background: #f0fff4;
+            border-left: 5px solid #27ae60;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .tip-box h4 {
+            color: #27ae60;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .author-note {
+            background: #fff9f0;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .author-note strong {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .eisenhower-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pomodoro-cycle {
+                flex-direction: column;
+            }
+            
+            .pomodoro-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "5 Zeitmanagement-Methoden für Burnout-Prävention",
+      "description": "Praktische Anleitungen zu ABC-Analyse, ALPEN-Methode, Eisenhower-Matrix, Pareto-Prinzip und Pomodoro-Technik für effektives Selbstmanagement.",
+      "inLanguage": "de-AT",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "ABC-Analyse",
+          "text": "Aufgaben nach Wichtigkeit in A (sehr wichtig), B (wichtig) und C (weniger wichtig) kategorisieren."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "ALPEN-Methode",
+          "text": "Tagesplanung mit: Aufgaben aufschreiben, Länge einschätzen, Pufferzeit einplanen, Entscheidungen treffen, Nachkontrolle."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Eisenhower-Matrix",
+          "text": "Aufgaben nach Wichtigkeit und Dringlichkeit in 4 Quadranten sortieren: sofort erledigen, terminieren, delegieren, eliminieren."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Pareto-Prinzip",
+          "text": "Mit 20% Arbeitseinsatz 80% Ertrag erzielen durch Fokus auf die wichtigsten Aufgaben."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Pomodoro-Technik",
+          "text": "In 25-Minuten-Blöcken arbeiten mit 5-Minuten-Pausen, nach 4 Blöcken eine 30-Minuten-Pause."
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Thomas Laggner",
+        "jobTitle": "Psychotherapeut"
+      }
+    }
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="index.html"><span class="brand-name">Burnout-Prävention</span></a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Kursübersicht</a></li>
+                <li><a href="modul7.html">Zurück zu Modul 9</a></li>
+                <li><a href="https://www.eTermin.net/thomaslaggner" target="_blank" class="btn-etermin-nav"><i class="fas fa-calendar-check"></i> Termin buchen</a></li>
+                <li><a href="https://www.professionelle-hilfe.com" class="btn-primary-nav">Hauptseite</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="module-header">
+        <div class="container">
+            <div class="module-breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Kursübersicht</a>
+                <span>/</span>
+                <a href="modul7.html">Modul 9</a>
+                <span>/</span>
+                <span>Zeitmanagement-Methoden</span>
+            </div>
+            <h1><i class="fas fa-clock"></i> 5 Zeitmanagement-Methoden</h1>
+            <p class="module-intro">Bewährte Techniken für effektives Selbstmanagement und Burnout-Prävention</p>
+            <div class="module-meta">
+                <span><i class="fas fa-book-open"></i> Ausführliche Anleitung</span>
+                <span><i class="fas fa-tools"></i> Mit praktischen Tools</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="module-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <article class="main-content">
+                    <div class="content-section">
+                        <div class="author-note">
+                            <p><i class="fas fa-info-circle"></i> <strong>Zeitmanagement-Techniken</strong> haben das Ziel, im Rahmen eines achtsamen Selbstmanagements die Organisation von Aufgaben in der zur Verfügung stehenden Zeit <strong>effektiver und effizienter</strong> durchführen zu können. Sie verhelfen dazu, den Tag insgesamt <strong>angstfreier, entspannter und stressfreier</strong> planen und gestalten zu können.</p>
+                        </div>
+
+                        <!-- Methode 1: ABC-Analyse -->
+                        <div class="method-card">
+                            <h3><span class="method-number">1</span> Die ABC-Analyse</h3>
+                            <p class="method-subtitle">Entwickelt 1951 von H. Ford Dickie, Manager bei General Electric (GE)</p>
+                            
+                            <p>Diese Methode unterscheidet Aufgaben nach dem <strong>Grad ihrer Signifikanz</strong> und dem <strong>erforderlichen Zeitaufwand</strong>. Das Verhältnis von Aufwand und Ertrag wird genauer betrachtet, um Prioritäten klarer zu setzen.</p>
+                            
+                            <table class="priority-table">
+                                <thead>
+                                    <tr>
+                                        <th>Kategorie</th>
+                                        <th>Priorität</th>
+                                        <th>Wert</th>
+                                        <th>Zeitaufwand</th>
+                                        <th>Beschreibung</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="priority-a">
+                                        <td><strong>A-Aufgaben</strong></td>
+                                        <td>Höchste</td>
+                                        <td>65%</td>
+                                        <td>15%</td>
+                                        <td>Sehr wichtige Aufgaben, die nicht delegiert werden können und nur von Ihnen selbst erledigt werden sollten</td>
+                                    </tr>
+                                    <tr class="priority-b">
+                                        <td><strong>B-Aufgaben</strong></td>
+                                        <td>Mittlere</td>
+                                        <td>20%</td>
+                                        <td>20%</td>
+                                        <td>Durchschnittlich wichtige Aufgaben, die teilweise delegiert werden können</td>
+                                    </tr>
+                                    <tr class="priority-c">
+                                        <td><strong>C-Aufgaben</strong></td>
+                                        <td>Niedrige</td>
+                                        <td>15%</td>
+                                        <td>65%</td>
+                                        <td>Routineaufgaben mit geringem Wert: Papiere zuordnen, Daueraufträge einrichten, Rechnungen überweisen, Korrespondenz</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <div class="tip-box">
+                                <h4><i class="fas fa-lightbulb"></i> Praxis-Tipp</h4>
+                                <p>Erstellen Sie morgens eine To-Do-Liste und markieren Sie jede Aufgabe mit A, B oder C. Beginnen Sie immer mit den A-Aufgaben, auch wenn die C-Aufgaben verlockend einfach erscheinen!</p>
+                            </div>
+                            
+                            <div class="example-box">
+                                <h4><i class="fas fa-user-tie"></i> Beispiel aus der Praxis</h4>
+                                <p><strong>A-Aufgabe:</strong> Wichtiges Kundengespräch vorbereiten (strategisch wichtig, nur Sie können es machen)</p>
+                                <p><strong>B-Aufgabe:</strong> Teammeeting organisieren (wichtig, könnte aber auch Assistent übernehmen)</p>
+                                <p><strong>C-Aufgabe:</strong> E-Mails sortieren und Ablage aufräumen (zeitintensiv, aber geringer Wert)</p>
+                            </div>
+                        </div>
+
+                        <!-- Methode 2: ALPEN-Methode -->
+                        <div class="method-card">
+                            <h3><span class="method-number">2</span> Die ALPEN-Methode</h3>
+                            <p class="method-subtitle">Entwickelt von Lothar J. Seiwert – Tagesplanung mit System</p>
+                            
+                            <p>Die ALPEN-Methode hilft Ihnen, den <strong>eigenen Tagesablauf effizienter zu strukturieren</strong>. Der Name leitet sich von den fünf Anfangsbuchstaben der einzelnen Schritte ab:</p>
+                            
+                            <ul class="alpen-steps">
+                                <li>
+                                    <strong>A – Aufgaben notieren</strong>
+                                    <p>Schreiben Sie alle Aufgaben, Aktivitäten, Besprechungen und Termine auf. Was steht heute wirklich an?</p>
+                                </li>
+                                <li>
+                                    <strong>L – Länge einschätzen</strong>
+                                    <p>Schätzen Sie realistisch ein, wie viel Zeit Sie für jede Aufgabe benötigen. Seien Sie ehrlich zu sich selbst!</p>
+                                </li>
+                                <li>
+                                    <strong>P – Pufferzeiten einplanen</strong>
+                                    <p>Planen Sie Reservezeiten ein. Für Aufgaben wird häufig mehr Zeit benötigt als ursprünglich gedacht. <strong>Regel: Nur 60% der Zeit verplanen, 40% Puffer lassen!</strong></p>
+                                </li>
+                                <li>
+                                    <strong>E – Entscheidungen treffen</strong>
+                                    <p>Teilen Sie Aufgaben nach Prioritäten auf und arbeiten Sie sie nach dem Grad der Dringlichkeit ab. Was ist wirklich wichtig?</p>
+                                </li>
+                                <li>
+                                    <strong>N – Nachkontrolle durchführen</strong>
+                                    <p>Prüfen Sie am Ende des Tages: Waren alle Vorgaben durchführbar? Habe ich die Zeitvorgaben und Prioritäten richtig eingeschätzt? Was lerne ich für morgen?</p>
+                                </li>
+                            </ul>
+                            
+                            <div class="tip-box">
+                                <h4><i class="fas fa-lightbulb"></i> Die goldene Regel</h4>
+                                <p><strong>60-40-Regel:</strong> Verplanen Sie nur 60% Ihrer verfügbaren Zeit fest. Die restlichen 40% bleiben als Puffer für Unvorhergesehenes, spontane Aufgaben und kreative Arbeit.</p>
+                            </div>
+                            
+                            <div class="example-box">
+                                <h4><i class="fas fa-calendar-day"></i> Beispiel-Tagesplan</h4>
+                                <p><strong>8:00-9:00:</strong> E-Mails bearbeiten (L: 60 Min)</p>
+                                <p><strong>9:00-11:00:</strong> Projekt X weiterbearbeiten (L: 120 Min)</p>
+                                <p><strong>11:00-12:00:</strong> PUFFER für Unvorhergesehenes</p>
+                                <p><strong>14:00-15:30:</strong> Teammeeting (L: 90 Min)</p>
+                                <p><strong>15:30-17:00:</strong> PUFFER + Nachkontrolle</p>
+                            </div>
+                        </div>
+
+                        <!-- Methode 3: Eisenhower-Matrix -->
+                        <div class="method-card">
+                            <h3><span class="method-number">3</span> Die Eisenhower-Matrix</h3>
+                            <p class="method-subtitle">Auch: Vier-Quadranten-Methode oder Eisenhower-Prinzip</p>
+                            
+                            <p>Die Methode trägt den Namen des ehemaligen 34. Präsidenten der USA. Dwight D. Eisenhower zitierte 1954: <em>„I have two kinds of problems, the urgent and the important. The urgent are not important, and the important are never urgent."</em></p>
+                            
+                            <p>Die Eisenhower-Matrix <strong>priorisiert Aufgaben</strong> und zerlegt sie in <strong>vier Kategorien</strong> anhand zweier Faktoren:</p>
+                            <ol>
+                                <li>Ist die Aufgabe <strong>wichtig</strong>?</li>
+                                <li>Ist die Aufgabe <strong>dringend</strong>?</li>
+                            </ol>
+                            
+                            <div class="eisenhower-grid">
+                                <div class="eisenhower-quadrant quadrant-a">
+                                    <div class="quadrant-title">
+                                        <span class="quadrant-badge">Quadrant A</span>
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <p><strong>Wichtig + Dringend</strong></p>
+                                    <p>Krisen, dringende Probleme, Deadlines, Notfälle</p>
+                                    <div class="quadrant-action">
+                                        ⚡ Sofort selbst erledigen!
+                                    </div>
+                                </div>
+                                
+                                <div class="eisenhower-quadrant quadrant-b">
+                                    <div class="quadrant-title">
+                                        <span class="quadrant-badge">Quadrant B</span>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p><strong>Wichtig + Nicht dringend</strong></p>
+                                    <p>Strategische Planung, Prävention, Beziehungen, Weiterbildung</p>
+                                    <div class="quadrant-action">
+                                        📅 Terminieren und selbst erledigen!
+                                    </div>
+                                </div>
+                                
+                                <div class="eisenhower-quadrant quadrant-c">
+                                    <div class="quadrant-title">
+                                        <span class="quadrant-badge">Quadrant C</span>
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <p><strong>Nicht wichtig + Dringend</strong></p>
+                                    <p>Unterbrechungen, manche Anrufe, viele E-Mails, Routinesitzungen</p>
+                                    <div class="quadrant-action">
+                                        👥 Delegieren!
+                                    </div>
+                                </div>
+                                
+                                <div class="eisenhower-quadrant quadrant-d">
+                                    <div class="quadrant-title">
+                                        <span class="quadrant-badge">Quadrant D</span>
+                                        <i class="fas fa-trash"></i>
+                                    </div>
+                                    <p><strong>Nicht wichtig + Nicht dringend</strong></p>
+                                    <p>Zeitfresser, Ablenkungen, unnötige Meetings, Trivialitäten</p>
+                                    <div class="quadrant-action">
+                                        🗑️ Eliminieren oder ablegen!
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tip-box">
+                                <h4><i class="fas fa-lightbulb"></i> Der Schlüssel zur Burnout-Prävention</h4>
+                                <p><strong>Verbringen Sie mehr Zeit in Quadrant B!</strong> Hier findet die wichtigste Arbeit statt: Prävention, strategische Planung, persönliche Entwicklung. Menschen, die hauptsächlich in A (Krisen) und C (Dringend, aber unwichtig) leben, sind burnout-gefährdet.</p>
+                            </div>
+                            
+                            <div class="example-box">
+                                <h4><i class="fas fa-user-md"></i> Burnout-Prävention konkret</h4>
+                                <p><strong>Quadrant B (wichtig, aber nicht dringend):</strong></p>
+                                <ul>
+                                    <li>Regelmäßige Pausen und Erholung einplanen</li>
+                                    <li>Sport und Bewegung fest im Kalender eintragen</li>
+                                    <li>Zeit für Familie und Freunde reservieren</li>
+                                    <li>Weiterbildung und persönliche Entwicklung</li>
+                                    <li>Präventive Gesundheitsvorsorge</li>
+                                </ul>
+                                <p><em>Diese Dinge werden erst „dringend" (Quadrant A), wenn wir sie vernachlässigen – dann als Burnout, Beziehungskrise oder Krankheit!</em></p>
+                            </div>
+                        </div>
+
+                        <!-- Methode 4: Pareto-Prinzip -->
+                        <div class="method-card">
+                            <h3><span class="method-number">4</span> Das Pareto-Prinzip</h3>
+                            <p class="method-subtitle">Die 80/20-Regel – benannt nach dem italienischen Ökonom Vilfredo Pareto</p>
+                            
+                            <p>Das Pareto-Prinzip besagt, dass man mit <strong>20% Arbeitseinsatz 80% Ertrag</strong> erzielt. Für die fehlenden 20% Ertrag müssen dagegen 80% Arbeitseinsatz aufgewendet werden.</p>
+                            
+                            <div class="pareto-visual">
+                                <div class="pareto-left">20% Aufwand</div>
+                                <div class="pareto-right">80% Ertrag</div>
+                            </div>
+                            
+                            <p>Dabei müssen die Zahlen 80 und 20 nicht exakt mit dem tatsächlichen Verhältnis übereinstimmen. Es geht um die Erkenntnis eines <strong>auffälligen Ungleichgewichts zwischen Einsatz und Ertrag</strong>. Mit relativ geringem Aufwand lässt sich bereits ein großer Anteil des Ertrages erzielen.</p>
+                            
+                            <div class="example-box">
+                                <h4><i class="fas fa-chart-line"></i> Beispiele für die 80:20-Regel</h4>
+                                <ul>
+                                    <li><strong>20% der Kunden</strong> bringen 80% des Umsatzes</li>
+                                    <li><strong>20% der Produktionsfehler</strong> verursachen 80% des Ausschusses</li>
+                                    <li><strong>20% der Zeitung</strong> enthalten 80% der Nachrichten</li>
+                                    <li><strong>20% der Besprechungszeit</strong> bewirken 80% der Beschlüsse</li>
+                                    <li><strong>20% der Schreibtischarbeit</strong> ermöglichen 80% des Arbeitserfolges</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="tip-box">
+                                <h4><i class="fas fa-lightbulb"></i> Fokussieren statt perfektionieren</h4>
+                                <p>Identifizieren Sie die <strong>wichtigsten 20% Ihrer Aufgaben</strong>, die den größten Erfolg bringen. Konzentrieren Sie sich darauf und lassen Sie Perfektionismus bei unwichtigen Details los. Das Motto: <strong>„Gut ist gut genug!"</strong></p>
+                            </div>
+                            
+                            <div class="author-note">
+                                <p><strong><i class="fas fa-exclamation-circle"></i> Wichtige Ausnahmen:</strong> Es gibt Aufgaben, die immer zu 100% durchgeführt werden müssen, zum Beispiel die Wartung eines Flugzeuges, medizinische Eingriffe oder die Entschärfung eines Blindgängers. Hier ist das Pareto-Prinzip nicht anwendbar!</p>
+                            </div>
+                        </div>
+
+                        <!-- Methode 5: Pomodoro-Technik -->
+                        <div class="method-card">
+                            <h3><span class="method-number">5</span> Die Pomodoro-Methode</h3>
+                            <p class="method-subtitle">Entwickelt von Francesco Cirillo – „Pomodoro" ist italienisch für „Tomate"</p>
+                            
+                            <p>Die Methode wurde von Francesco Cirillo entworfen, der seine <strong>Arbeitszeit in kleinere Einheiten von jeweils 25 Minuten</strong> aufteilte. Cirillo verwendete einen Kurzzeitwecker in Form einer Tomate.</p>
+                            
+                            <div class="pomodoro-cycle">
+                                <div class="pomodoro-block">
+                                    <div class="pomodoro-timer">25 Min</div>
+                                    <p>Arbeiten</p>
+                                </div>
+                                <span class="pomodoro-arrow">→</span>
+                                <div class="pomodoro-block">
+                                    <div class="pomodoro-timer pomodoro-break">5 Min</div>
+                                    <p>Pause</p>
+                                </div>
+                                <span class="pomodoro-arrow">→</span>
+                                <div class="pomodoro-block">
+                                    <div class="pomodoro-timer">25 Min</div>
+                                    <p>Arbeiten</p>
+                                </div>
+                                <span class="pomodoro-arrow">→</span>
+                                <div class="pomodoro-block">
+                                    <div class="pomodoro-timer pomodoro-break">5 Min</div>
+                                    <p>Pause</p>
+                                </div>
+                            </div>
+                            
+                            <p style="text-align: center; margin: 20px 0; font-size: 1.5rem;">↓</p>
+                            
+                            <div style="text-align: center;">
+                                <div class="pomodoro-block">
+                                    <div class="pomodoro-timer pomodoro-long-break">30 Min</div>
+                                    <p style="font-weight: 700;">Lange Pause nach 4 Durchgängen</p>
+                                </div>
+                            </div>
+                            
+                            <h4 style="margin-top: 30px;"><i class="fas fa-check-circle"></i> Der Ablauf im Detail:</h4>
+                            <ol>
+                                <li>Arbeiten Sie <strong>25 Minuten konzentriert</strong> an einer Aufgabe</li>
+                                <li>Machen Sie eine <strong>5-minütige Pause</strong></li>
+                                <li>Wiederholen Sie diesen Vorgang <strong>weitere dreimal</strong></li>
+                                <li>Nach dem vierten Durchgang machen Sie eine <strong>längere Pause von 30 Minuten</strong></li>
+                                <li>Danach beginnt der Zyklus von vorne</li>
+                            </ol>
+                            
+                            <div class="tip-box">
+                                <h4><i class="fas fa-heart"></i> Vorteil für Burnout-Prävention</h4>
+                                <p>Menschen, die dazu neigen, sich zu <strong>überfordern und über ihre Grenzen zu gehen</strong>, werden durch die Timer-Funktion daran erinnert, beizeiten eine kurze Pause einzulegen. Die Pause dient dazu, die <strong>eigene Befindlichkeit wahrzunehmen</strong> und sich bei Bedarf zu entspannen.</p>
+                                <p>Durch die Aufteilung der Aufgaben in <strong>überschaubare Blöcke</strong> gewinnen Sie einen guten Überblick über die geleistete Arbeit und erleben häufiger Erfolgserlebnisse.</p>
+                            </div>
+                            
+                            <div class="example-box">
+                                <h4><i class="fas fa-mobile-alt"></i> Praktische Umsetzung</h4>
+                                <p><strong>Kostenlose Pomodoro-Timer:</strong></p>
+                                <ul>
+                                    <li>📱 Smartphone-Apps: „Focus Keeper", „Pomodoro Timer Lite", „Forest"</li>
+                                    <li>💻 Webseiten: pomofocus.io, tomato-timer.com</li>
+                                    <li>⏰ Oder einfach: Küchenwecker oder Handywecker</li>
+                                </ul>
+                                <p><strong>Wichtig:</strong> In den 5-Minuten-Pausen wirklich vom Bildschirm wegschauen, aufstehen, strecken, ans Fenster gehen, kurz meditieren oder atmen!</p>
+                            </div>
+                        </div>
+
+                        <!-- Zusammenfassung -->
+                        <div class="content-section" style="margin-top: 40px;">
+                            <h2><i class="fas fa-lightbulb"></i> Welche Methode passt zu Ihnen?</h2>
+                            
+                            <div class="info-box">
+                                <h4><i class="fas fa-compass"></i> Orientierungshilfe</h4>
+                                <ul>
+                                    <li><strong>ABC-Analyse:</strong> Ideal für Menschen, die viele verschiedene Aufgaben haben und Schwierigkeiten beim Priorisieren haben</li>
+                                    <li><strong>ALPEN-Methode:</strong> Perfekt für strukturierte Tagesplanung, besonders wenn Ihr Tag viele Termine und Besprechungen enthält</li>
+                                    <li><strong>Eisenhower-Matrix:</strong> Hervorragend zur strategischen Planung und um aus dem „Dringlichkeits-Modus" herauszukommen</li>
+                                    <li><strong>Pareto-Prinzip:</strong> Hilfreich für Perfektionisten, die lernen möchten, sich auf das Wesentliche zu konzentrieren</li>
+                                    <li><strong>Pomodoro-Technik:</strong> Ideal bei Konzentrationsschwierigkeiten oder Tendenz, Pausen zu vergessen</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="tip-box">
+                                <h4><i class="fas fa-puzzle-piece"></i> Kombination möglich!</h4>
+                                <p>Sie müssen sich nicht für eine Methode entscheiden. Kombinieren Sie sie sinnvoll:</p>
+                                <ul>
+                                    <li>Morgens: <strong>ALPEN-Methode</strong> für Tagesplanung</li>
+                                    <li>Beim Planen: <strong>Eisenhower-Matrix</strong> zur Priorisierung</li>
+                                    <li>Beim Arbeiten: <strong>Pomodoro-Technik</strong> für fokussierte Arbeit</li>
+                                    <li>Generell: <strong>Pareto-Prinzip</strong> im Hinterkopf behalten</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Reflexion -->
+                        <div class="content-section">
+                            <h2><i class="fas fa-edit"></i> Ihre persönliche Zeitmanagement-Strategie</h2>
+                            <div class="reflection-box">
+                                <h4>Welche Methode(n) möchten Sie ausprobieren? Wie setzen Sie sie konkret um?</h4>
+                                <textarea id="reflection-strategy" placeholder="Ihre Gedanken und Ihr persönlicher Umsetzungsplan..." rows="8"></textarea>
+                                <p class="auto-save-note"><i class="fas fa-save"></i> Automatisch gespeichert</p>
+                            </div>
+                        </div>
+
+                        <div class="module-navigation">
+                            <a href="modul7.html" class="btn-nav btn-back"><i class="fas fa-arrow-left"></i> Zurück zu Modul 9</a>
+                        </div>
+                    </div>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="sidebar-card">
+                        <h3>📚 Auf dieser Seite</h3>
+                        <ul class="sidebar-links">
+                            <li><a href="#abc">1. ABC-Analyse</a></li>
+                            <li><a href="#alpen">2. ALPEN-Methode</a></li>
+                            <li><a href="#eisenhower">3. Eisenhower-Matrix</a></li>
+                            <li><a href="#pareto">4. Pareto-Prinzip</a></li>
+                            <li><a href="#pomodoro">5. Pomodoro-Technik</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-card cta-card">
+                        <h3>Persönliches Zeitmanagement-Coaching</h3>
+                        <p>Lassen Sie uns gemeinsam Ihre individuelle Zeitmanagement-Strategie entwickeln!</p>
+                        <a href="https://www.eTermin.net/thomaslaggner" target="_blank" class="btn-cta"><i class="fas fa-calendar-alt"></i> Termin vereinbaren</a>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3>💡 Weiterführende Themen</h3>
+                        <ul class="sidebar-links">
+                            <li><a href="modul7.html">Zurück zu Modul 9</a></li>
+                            <li><a href="modul6.html">Persönliche Werte (Modul 7 & 8)</a></li>
+                            <li><a href="modul8.html">Burnout-Prävention im Betrieb (Modul 10)</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-compact">
+        <div class="container">
+            <p>&copy; 2025 Thomas Laggner - Professionelle Hilfe | <a href="https://www.professionelle-hilfe.com">www.professionelle-hilfe.com</a></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // LocalStorage für Reflexion
+        const reflectionTextarea = document.getElementById('reflection-strategy');
+        const STORAGE_KEY = 'zeitmanagement_reflection';
+
+        // Lade gespeicherten Text
+        if (reflectionTextarea) {
+            const savedText = localStorage.getItem(STORAGE_KEY);
+            if (savedText) {
+                reflectionTextarea.value = savedText;
+            }
+
+            // Auto-save mit Debounce
+            let saveTimeout;
+            reflectionTextarea.addEventListener('input', function() {
+                clearTimeout(saveTimeout);
+                saveTimeout = setTimeout(() => {
+                    localStorage.setItem(STORAGE_KEY, this.value);
+                }, 1000);
+            });
+        }
+
+        // Smooth scroll für Sidebar-Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

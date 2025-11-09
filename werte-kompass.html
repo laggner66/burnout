@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Persönlicher Werte-Kompass: Finden Sie Ihre wichtigsten Lebenswerte. Interaktive Werte-Übung zur Klärung Ihrer Prioritäten und Lebensausrichtung. Von Psychotherapeut Thomas Laggner.">
+    <meta name="keywords" content="Werte-Kompass, persönliche Werte, Wertehierarchie, Lebenswerte klären, Wertearbeit, Sinnfindung, Lebensausrichtung">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.professionelle-hilfe.com/burnout-kurs/werte-kompass.html">
+    <title>Persönlicher Werte-Kompass: Ihre wichtigsten Lebenswerte | Thomas Laggner</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/module.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .werte-intro {
+            background: linear-gradient(135deg, #fff3e6, #ffe8cc);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--accent-color);
+        }
+        .werte-intro h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .value-card {
+            background: white;
+            padding: 1.5rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid #e0e0e0;
+            position: relative;
+        }
+        .value-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-color: var(--primary-color);
+        }
+        .value-card.selected {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border-color: var(--primary-dark);
+            transform: scale(1.05);
+        }
+        .value-card .value-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .value-card.selected .value-icon {
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .value-card .value-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .selection-counter {
+            position: sticky;
+            top: 80px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            text-align: center;
+            z-index: 10;
+        }
+        .counter-text {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        .selected-values-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        .selected-value-tag {
+            background: var(--primary-light);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .remove-value {
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .ranking-section {
+            display: none;
+            margin-top: 3rem;
+        }
+        .ranking-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: move;
+        }
+        .ranking-number {
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .ranking-value-name {
+            flex: 1;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        .ranking-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .btn-move {
+            background: #f0f0f0;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-move:hover {
+            background: var(--primary-light);
+            color: white;
+        }
+        .btn-next-step {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 2rem auto;
+            display: block;
+            transition: all 0.3s;
+        }
+        .btn-next-step:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        .btn-next-step:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .reflection-section {
+            display: none;
+            margin-top: 3rem;
+        }
+        .top-values-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .top-value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .top-value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 12px 12px 0 0;
+        }
+        .top-value-rank {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+        .top-value-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin: 1rem 0;
+        }
+    </style>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Persönlicher Werte-Kompass",
+      "description": "Interaktive Übung zur Klärung persönlicher Werte und Erstellung einer Wertehierarchie.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+      "inLanguage": "de-AT"
+    }
+    </script>
+</head>
+<body itemscope itemtype="https://schema.org/Article">
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="index.html"><span class="brand-name">Burnout-Prävention</span></a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Kursübersicht</a></li>
+                <li><a href="https://www.eTermin.net/thomaslaggner" target="_blank" class="btn-etermin-nav"><i class="fas fa-calendar-check"></i> Termin buchen</a></li>
+                <li><a href="https://www.professionelle-hilfe.com" class="btn-primary-nav">Hauptseite</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="module-header">
+        <div class="container">
+            <div class="module-breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Kursübersicht</a>
+                <span>/</span>
+                <a href="modul6.html">Modul 7 & 8</a>
+                <span>/</span>
+                <span>Werte-Kompass</span>
+            </div>
+            <h1><i class="fas fa-compass"></i> Ihr persönlicher Werte-Kompass</h1>
+            <p class="module-intro">Entdecken Sie Ihre wichtigsten Lebenswerte und schaffen Sie Klarheit über Ihre Prioritäten</p>
+        </div>
+    </section>
+
+    <section class="module-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <article class="main-content">
+
+                    <div class="werte-intro">
+                        <h3><i class="fas fa-heart"></i> Warum Werte wichtig sind</h3>
+                        <p>Die <strong>persönlichen Werte eines Menschen sind seine stärkste Motivation und nachhaltigste Antriebskraft!</strong> Sie geben seinem Leben einen selbstbewussten Sinn. Sie drücken aus, was ihm wichtig ist und ihm etwas bedeutet.</p>
+                        <p style="margin-top: 1rem;">Als intuitiver Handlungsleitfaden geben Werte <strong>Orientierung und bieten Halt</strong> in einer komplexen, unübersichtlichen Welt. Sie dienen als unerlässlicher Kompass, wenn das Navigieren im Fahrwasser kompliziert wird, und als sicherer Anker in Krisenzeiten.</p>
+                        <p style="margin-top: 1rem;">Unsere Werte sind nicht in Stein gemeißelt. Sie können sich im Laufe des Lebens verändern und weiterentwickeln. Umso wichtiger ist es, sich regelmäßig bewusst zu machen: <strong>Was ist mir wirklich wichtig?</strong></p>
+                    </div>
+
+                    <!-- Schritt 1: Werte auswählen -->
+                    <div class="content-section" id="step1">
+                        <h2><i class="fas fa-list"></i> Schritt 1: Wählen Sie Ihre Werte</h2>
+                        <p>Klicken Sie auf die Werte, die Ihnen <strong>persönlich wichtig</strong> sind. Wählen Sie zunächst intuitiv – hören Sie auf Ihr Bauchgefühl. Sie können maximal <strong>15 Werte</strong> auswählen.</p>
+                        
+                        <div class="selection-counter">
+                            <div class="counter-text"><span id="selectedCount">0</span> / 15 Werte ausgewählt</div>
+                            <div class="selected-values-list" id="selectedValuesList"></div>
+                        </div>
+
+                        <div class="values-grid" id="valuesGrid">
+                            <!-- Values will be generated by JavaScript -->
+                        </div>
+
+                        <button class="btn-next-step" id="btnToRanking" disabled>
+                            <i class="fas fa-arrow-right"></i> Weiter zur Priorisierung
+                        </button>
+                    </div>
+
+                    <!-- Schritt 2: Priorisieren -->
+                    <div class="ranking-section" id="step2">
+                        <h2><i class="fas fa-sort-amount-down"></i> Schritt 2: Priorisieren Sie Ihre Werte</h2>
+                        <p>Ordnen Sie Ihre ausgewählten Werte nach <strong>Wichtigkeit</strong>. Welcher Wert ist Ihnen am wichtigsten? Verschieben Sie die Werte mit den Pfeilen in die richtige Reihenfolge.</p>
+                        
+                        <div class="alert-box info">
+                            <i class="fas fa-lightbulb"></i>
+                            <div>
+                                <strong>Tipp:</strong> Stellen Sie sich vor, Sie müssten auf einen dieser Werte verzichten. Welcher würde Ihnen am meisten fehlen? Das ist wahrscheinlich Ihr wichtigster Wert.
+                            </div>
+                        </div>
+
+                        <div id="rankingList"></div>
+
+                        <button class="btn-next-step" id="btnToReflection">
+                            <i class="fas fa-arrow-right"></i> Weiter zur Reflexion
+                        </button>
+                    </div>
+
+                    <!-- Schritt 3: Reflexion -->
+                    <div class="reflection-section" id="step3">
+                        <h2><i class="fas fa-star"></i> Ihre Top 5 Werte</h2>
+                        <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">Dies sind Ihre wichtigsten Lebenswerte – Ihr persönlicher Werte-Kompass:</p>
+
+                        <div class="top-values-display" id="topValuesDisplay"></div>
+
+                        <div class="content-section">
+                            <h3><i class="fas fa-edit"></i> Reflexionsfragen</h3>
+                            <div class="reflection-box">
+                                <h4>1. Wie leben Sie Ihre Werte aktuell?</h4>
+                                <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">Bewerten Sie für jeden Ihrer Top 5 Werte: Wie sehr lebe ich diesen Wert aktuell in meinem Alltag? (1 = gar nicht, 10 = vollständig)</p>
+                                <textarea id="reflection1" placeholder="Ihre Antwort..." rows="4"></textarea>
+                            </div>
+                            <div class="reflection-box" style="margin-top: 1.5rem;">
+                                <h4>2. Wo gibt es Wertekonflikte?</h4>
+                                <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">Gibt es Situationen, in denen zwei Ihrer Werte im Widerspruch zueinander stehen?</p>
+                                <textarea id="reflection2" placeholder="Ihre Antwort..." rows="4"></textarea>
+                            </div>
+                            <div class="reflection-box" style="margin-top: 1.5rem;">
+                                <h4>3. Was möchten Sie verändern?</h4>
+                                <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">Welche konkreten Schritte können Sie unternehmen, um Ihre wichtigsten Werte stärker zu leben?</p>
+                                <textarea id="reflection3" placeholder="Ihre Antwort..." rows="4"></textarea>
+                            </div>
+                            <p class="auto-save-note"><i class="fas fa-save"></i> Ihre Antworten werden automatisch gespeichert</p>
+                        </div>
+
+                        <div class="alert-box success" style="margin-top: 2rem;">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Glückwunsch! Sie haben Ihren Werte-Kompass erstellt.</h4>
+                                <p>Ihre Werte sind jetzt geklärt. Nutzen Sie sie als Orientierung für wichtige Entscheidungen, beim Setzen von Zielen und in Konfliktsituationen.</p>
+                                <p style="margin-top: 1rem;"><strong>Tipp:</strong> Kommen Sie regelmäßig zu dieser Übung zurück – etwa alle 6-12 Monate. Werte können sich verändern, und das ist völlig normal.</p>
+                            </div>
+                        </div>
+
+                        <div class="content-section">
+                            <h3><i class="fas fa-arrow-right"></i> Weiterführende Übungen</h3>
+                            <div class="dimensions-grid">
+                                <div class="dimension-card">
+                                    <div class="dimension-icon"><i class="fas fa-balance-scale"></i></div>
+                                    <h4>Wertekonflikte lösen</h4>
+                                    <p>Lernen Sie, mit widersprüchlichen Werten umzugehen</p>
+                                    <a href="werte-konflikte.html" style="color: var(--primary-color); font-weight: bold;">→ Zur Übung</a>
+                                </div>
+                                <div class="dimension-card">
+                                    <div class="dimension-icon"><i class="fas fa-th"></i></div>
+                                    <h4>Wertequadrat</h4>
+                                    <p>Entdecken Sie die Balance Ihrer Werte</p>
+                                    <a href="werte-quadrat.html" style="color: var(--primary-color); font-weight: bold;">→ Zum Wertequadrat</a>
+                                </div>
+                                <div class="dimension-card">
+                                    <div class="dimension-icon"><i class="fas fa-bullseye"></i></div>
+                                    <h4>Werte & Ziele</h4>
+                                    <p>Setzen Sie werteorientierte Ziele</p>
+                                    <a href="modul6.html#ziele" style="color: var(--primary-color); font-weight: bold;">→ Zurück zu Modul 7 & 8</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </article>
+
+                <aside class="sidebar">
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-info-circle"></i> Hinweis</h3>
+                        <p>Diese Übung dauert etwa 15-20 Minuten. Nehmen Sie sich Zeit und einen ruhigen Ort.</p>
+                    </div>
+
+                    <div class="sidebar-card cta-card">
+                        <h3>Persönliche Wertearbeit</h3>
+                        <p>Möchten Sie Ihre Werte in einer therapeutischen Begleitung vertiefen?</p>
+                        <a href="https://www.eTermin.net/thomaslaggner" target="_blank" class="btn-cta"><i class="fas fa-calendar-alt"></i> Termin vereinbaren</a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-compact">
+        <div class="container">
+            <p>&copy; 2025 Thomas Laggner - Professionelle Hilfe | <a href="https://www.professionelle-hilfe.com">www.professionelle-hilfe.com</a></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Umfassende Werteliste
+        const values = [
+            {name: "Freiheit", icon: "🕊️"},
+            {name: "Familie", icon: "👨‍👩‍👧‍👦"},
+            {name: "Gesundheit", icon: "❤️"},
+            {name: "Erfolg", icon: "🏆"},
+            {name: "Ehrlichkeit", icon: "💎"},
+            {name: "Kreativität", icon: "🎨"},
+            {name: "Sicherheit", icon: "🛡️"},
+            {name: "Abenteuer", icon: "🌍"},
+            {name: "Freundschaft", icon: "🤝"},
+            {name: "Respekt", icon: "🙏"},
+            {name: "Liebe", icon: "💝"},
+            {name: "Wachstum", icon: "🌱"},
+            {name: "Gerechtigkeit", icon: "⚖️"},
+            {name: "Humor", icon: "😄"},
+            {name: "Ruhe", icon: "🧘"},
+            {name: "Verantwortung", icon: "📋"},
+            {name: "Mut", icon: "🦁"},
+            {name: "Vertrauen", icon: "🤲"},
+            {name: "Dankbarkeit", icon: "🙌"},
+            {name: "Authentizität", icon: "✨"},
+            {name: "Harmonie", icon: "☯️"},
+            {name: "Bildung", icon: "📚"},
+            {name: "Natur", icon: "🌳"},
+            {name: "Spiritualität", icon: "🕉️"},
+            {name: "Gemeinschaft", icon: "👥"},
+            {name: "Unabhängigkeit", icon: "🦅"},
+            {name: "Großzügigkeit", icon: "🎁"},
+            {name: "Loyalität", icon: "🔐"},
+            {name: "Optimismus", icon: "☀️"},
+            {name: "Bescheidenheit", icon: "🌾"},
+            {name: "Toleranz", icon: "🌈"},
+            {name: "Disziplin", icon: "📊"},
+            {name: "Leidenschaft", icon: "🔥"},
+            {name: "Weisheit", icon: "🦉"},
+            {name: "Mitgefühl", icon: "💕"},
+            {name: "Tradition", icon: "🏛️"},
+            {name: "Innovation", icon: "💡"},
+            {name: "Schönheit", icon: "🌺"},
+            {name: "Genuss", icon: "🍷"},
+            {name: "Leistung", icon: "📈"}
+        ];
+
+        let selectedValues = [];
+        const maxSelection = 15;
+
+        // Render values grid
+        const valuesGrid = document.getElementById('valuesGrid');
+        values.forEach((value, index) => {
+            const card = document.createElement('div');
+            card.className = 'value-card';
+            card.dataset.index = index;
+            card.innerHTML = `
+                <div class="value-icon">${value.icon}</div>
+                <div class="value-name">${value.name}</div>
+            `;
+            card.addEventListener('click', () => toggleValue(index, card));
+            valuesGrid.appendChild(card);
+        });
+
+        function toggleValue(index, card) {
+            const value = values[index];
+            const existingIndex = selectedValues.findIndex(v => v.name === value.name);
+            
+            if (existingIndex > -1) {
+                selectedValues.splice(existingIndex, 1);
+                card.classList.remove('selected');
+            } else {
+                if (selectedValues.length < maxSelection) {
+                    selectedValues.push(value);
+                    card.classList.add('selected');
+                } else {
+                    alert(`Sie können maximal ${maxSelection} Werte auswählen.`);
+                    return;
+                }
+            }
+            
+            updateSelectionDisplay();
+            saveToLocalStorage();
+        }
+
+        function updateSelectionDisplay() {
+            document.getElementById('selectedCount').textContent = selectedValues.length;
+            document.getElementById('btnToRanking').disabled = selectedValues.length < 5;
+            
+            const listContainer = document.getElementById('selectedValuesList');
+            listContainer.innerHTML = '';
+            selectedValues.forEach(value => {
+                const tag = document.createElement('span');
+                tag.className = 'selected-value-tag';
+                tag.innerHTML = `${value.icon} ${value.name} <span class="remove-value" data-name="${value.name}">✕</span>`;
+                tag.querySelector('.remove-value').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const card = Array.from(valuesGrid.children).find(c => 
+                        values[c.dataset.index].name === value.name
+                    );
+                    if (card) toggleValue(parseInt(card.dataset.index), card);
+                });
+                listContainer.appendChild(tag);
+            });
+        }
+
+        // Step 2: Ranking
+        document.getElementById('btnToRanking').addEventListener('click', () => {
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
+            document.getElementById('step2').scrollIntoView({behavior: 'smooth'});
+            renderRanking();
+        });
+
+        function renderRanking() {
+            const rankingList = document.getElementById('rankingList');
+            rankingList.innerHTML = '';
+            
+            selectedValues.forEach((value, index) => {
+                const item = document.createElement('div');
+                item.className = 'ranking-item';
+                item.innerHTML = `
+                    <div class="ranking-number">${index + 1}</div>
+                    <div class="ranking-value-name">${value.icon} ${value.name}</div>
+                    <div class="ranking-controls">
+                        <button class="btn-move" onclick="moveUp(${index})" ${index === 0 ? 'disabled' : ''}>
+                            <i class="fas fa-arrow-up"></i>
+                        </button>
+                        <button class="btn-move" onclick="moveDown(${index})" ${index === selectedValues.length - 1 ? 'disabled' : ''}>
+                            <i class="fas fa-arrow-down"></i>
+                        </button>
+                    </div>
+                `;
+                rankingList.appendChild(item);
+            });
+        }
+
+        window.moveUp = function(index) {
+            if (index > 0) {
+                [selectedValues[index], selectedValues[index - 1]] = [selectedValues[index - 1], selectedValues[index]];
+                renderRanking();
+                saveToLocalStorage();
+            }
+        };
+
+        window.moveDown = function(index) {
+            if (index < selectedValues.length - 1) {
+                [selectedValues[index], selectedValues[index + 1]] = [selectedValues[index + 1], selectedValues[index]];
+                renderRanking();
+                saveToLocalStorage();
+            }
+        };
+
+        // Step 3: Reflection
+        document.getElementById('btnToReflection').addEventListener('click', () => {
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('step3').style.display = 'block';
+            document.getElementById('step3').scrollIntoView({behavior: 'smooth'});
+            displayTopValues();
+        });
+
+        function displayTopValues() {
+            const topValuesDisplay = document.getElementById('topValuesDisplay');
+            topValuesDisplay.innerHTML = '';
+            
+            selectedValues.slice(0, 5).forEach((value, index) => {
+                const card = document.createElement('div');
+                card.className = 'top-value-card';
+                card.innerHTML = `
+                    <div class="top-value-rank">${index + 1}</div>
+                    <div class="top-value-name">${value.icon}<br>${value.name}</div>
+                `;
+                topValuesDisplay.appendChild(card);
+            });
+        }
+
+        // Auto-save reflections
+        ['reflection1', 'reflection2', 'reflection3'].forEach(id => {
+            const textarea = document.getElementById(id);
+            let timeout;
+            textarea.addEventListener('input', () => {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    localStorage.setItem(`werte_${id}`, textarea.value);
+                }, 1000);
+            });
+        });
+
+        // Save/Load from LocalStorage
+        function saveToLocalStorage() {
+            localStorage.setItem('werte_selected', JSON.stringify(selectedValues));
+        }
+
+        function loadFromLocalStorage() {
+            const saved = localStorage.getItem('werte_selected');
+            if (saved) {
+                selectedValues = JSON.parse(saved);
+                selectedValues.forEach(value => {
+                    const index = values.findIndex(v => v.name === value.name);
+                    if (index > -1) {
+                        const card = valuesGrid.children[index];
+                        card.classList.add('selected');
+                    }
+                });
+                updateSelectionDisplay();
+            }
+            
+            ['reflection1', 'reflection2', 'reflection3'].forEach(id => {
+                const saved = localStorage.getItem(`werte_${id}`);
+                if (saved) {
+                    document.getElementById(id).value = saved;
+                }
+            });
+        }
+
+        window.addEventListener('load', loadFromLocalStorage);
+    </script>
+</body>
+</html>

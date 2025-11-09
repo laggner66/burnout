@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Innere Antreiber Test: Bewerten Sie 50 Aussagen nach Häufigkeit (nie bis immer). Finden Sie heraus, welche der 5 Antreiber Sie am stärksten prägen. Wissenschaftlich fundierter Selbsttest.">
+    <meta name="keywords" content="Innere Antreiber Test, Taibi Kahler Selbsttest, 50 Fragen Antreiber, Häufigkeitstest Antreiber, Transaktionsanalyse Test">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.professionelle-hilfe.com/burnout-kurs/innere-antreiber-test-fritz.html">
+    <title>Innere Antreiber Test (50 Fragen) | Thomas Laggner</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/module.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .test-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .question-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        .question-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+        .question-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .question-number {
+            background: var(--primary-color);
+            color: white;
+            min-width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .question-text {
+            flex: 1;
+            font-size: 1.05rem;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 0.5rem;
+        }
+        .rating-scale {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .rating-option {
+            flex: 1;
+            min-width: 80px;
+        }
+        .rating-option input[type="radio"] {
+            display: none;
+        }
+        .rating-option label {
+            display: block;
+            padding: 0.8rem 0.5rem;
+            text-align: center;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .rating-option input[type="radio"]:checked + label {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(217, 118, 66, 0.3);
+        }
+        .rating-option label:hover {
+            border-color: var(--primary-color);
+            background: #fff3e6;
+        }
+        .rating-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            padding: 0 0.5rem;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        .progress-indicator {
+            position: sticky;
+            top: 80px;
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            z-index: 10;
+        }
+        .progress-bar-container {
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transition: width 0.3s ease;
+        }
+        .progress-text {
+            text-align: center;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-top: 0.5rem;
+        }
+        .btn-evaluate {
+            background: var(--primary-color);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            max-width: 500px;
+            display: block;
+            margin: 2rem auto;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(217, 118, 66, 0.3);
+        }
+        .btn-evaluate:hover:not(:disabled) {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(217, 118, 66, 0.4);
+        }
+        .btn-evaluate:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        .results-section {
+            display: none;
+            margin-top: 3rem;
+        }
+        .result-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .result-rank {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .result-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+        }
+        .result-title {
+            flex: 1;
+        }
+        .result-title h3 {
+            color: var(--secondary-color);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.8rem;
+        }
+        .result-subtitle {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        .result-score-display {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        .score-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+        .score-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        .result-bar {
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        .result-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 1rem;
+            color: white;
+            font-weight: 600;
+            transition: width 1s ease;
+        }
+        .interpretation {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            margin-top: 1rem;
+        }
+        .interpretation h4 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+        .test-instructions {
+            background: linear-gradient(135deg, #fff3e6, #ffe8cc);
+            border-left: 5px solid var(--accent-color);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        .test-instructions h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+        .scale-legend {
+            display: flex;
+            justify-content: space-around;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .scale-item {
+            text-align: center;
+            flex: 1;
+            min-width: 80px;
+        }
+        .scale-value {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        .scale-text {
+            font-size: 0.85rem;
+            color: #666;
+        }
+    </style>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Innere Antreiber Test (50 Fragen)",
+      "description": "Umfassender Test zur Identifikation der 5 inneren Antreiber mit 50 Fragen und Häufigkeitsskala.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+      "inLanguage": "de-AT"
+    }
+    </script>
+</head>
+<body itemscope itemtype="https://schema.org/Article">
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="index.html"><span class="brand-name">Burnout-Prävention</span></a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Kursübersicht</a></li>
+                <li><a href="https://www.eTermin.net/thomaslaggner" target="_blank" class="btn-etermin-nav"><i class="fas fa-calendar-check"></i> Termin buchen</a></li>
+                <li><a href="https://www.professionelle-hilfe.com" class="btn-primary-nav">Hauptseite</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="module-header">
+        <div class="container">
+            <div class="module-breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Kursübersicht</a>
+                <span>/</span>
+                <a href="modul5.html">Modul 5 & 6</a>
+                <span>/</span>
+                <span>Innere Antreiber Test (50 Fragen)</span>
+            </div>
+            <h1><i class="fas fa-tasks"></i> Innere Antreiber Test</h1>
+            <p class="module-intro">Umfassende Selbstanalyse mit 50 Aussagen – nach dem Modell von Taibi Kahler</p>
+        </div>
+    </section>
+
+    <section class="module-content">
+        <div class="container">
+            <div class="test-container">
+                
+                <div class="test-instructions">
+                    <h3><i class="fas fa-info-circle"></i> So funktioniert der Test</h3>
+                    <p>Dieser Test besteht aus <strong>50 Aussagen</strong>, die unterschiedliche Verhaltensweisen und Einstellungen beschreiben.</p>
+                    <p style="margin-top: 1rem;"><strong>Ihre Aufgabe:</strong> Bewerten Sie jede Aussage danach, <strong>wie häufig</strong> Sie so denken oder handeln.</p>
+                    
+                    <div class="scale-legend">
+                        <div class="scale-item">
+                            <div class="scale-value">0</div>
+                            <div class="scale-text">nie</div>
+                        </div>
+                        <div class="scale-item">
+                            <div class="scale-value">1</div>
+                            <div class="scale-text">selten</div>
+                        </div>
+                        <div class="scale-item">
+                            <div class="scale-value">2</div>
+                            <div class="scale-text">manchmal</div>
+                        </div>
+                        <div class="scale-item">
+                            <div class="scale-value">3</div>
+                            <div class="scale-text">oft</div>
+                        </div>
+                        <div class="scale-item">
+                            <div class="scale-value">4</div>
+                            <div class="scale-text">sehr oft</div>
+                        </div>
+                        <div class="scale-item">
+                            <div class="scale-value">5</div>
+                            <div class="scale-text">immer</div>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 1rem;"><strong>Wichtig:</strong> Es gibt keine "richtigen" oder "falschen" Antworten. Antworten Sie spontan und ehrlich – so, wie es tatsächlich ist, nicht wie es sein sollte.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Dauer:</strong> ca. 10-15 Minuten</p>
+                </div>
+
+                <div class="progress-indicator">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="progressBar"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">0 von 50 Fragen beantwortet</div>
+                </div>
+
+                <form id="antreiberTestForm">
+                    <!-- Questions will be generated here by JavaScript -->
+                </form>
+
+                <button type="button" class="btn-evaluate" id="evaluateBtn" disabled>
+                    <i class="fas fa-chart-bar"></i> Test auswerten
+                </button>
+
+                <div class="results-section" id="resultsSection">
+                    <h2 style="text-align: center; color: var(--secondary-color); margin-bottom: 2rem;">
+                        <i class="fas fa-trophy"></i> Ihre Auswertung
+                    </h2>
+                    <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">
+                        Die Auswertung zeigt, welche inneren Antreiber bei Ihnen am stärksten ausgeprägt sind:
+                    </p>
+                    <div id="resultsContainer"></div>
+
+                    <div class="alert-box success" style="margin-top: 3rem;">
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <h4>Interpretation Ihrer Ergebnisse</h4>
+                            <p><strong>Hohe Werte (40-50 Punkte):</strong> Dieser Antreiber ist sehr dominant und beeinflusst Ihr Verhalten stark. Achten Sie besonders darauf, ob er Sie unter Stress in automatische Muster zwingt.</p>
+                            <p style="margin-top: 0.8rem;"><strong>Mittlere Werte (20-39 Punkte):</strong> Dieser Antreiber ist präsent, aber ausbalanciert. Er kann Sie unterstützen, ohne Sie zu überfordern.</p>
+                            <p style="margin-top: 0.8rem;"><strong>Niedrige Werte (0-19 Punkte):</strong> Dieser Antreiber spielt in Ihrem Leben eine untergeordnete Rolle.</p>
+                            <p style="margin-top: 1rem; font-weight: 600; color: var(--primary-color);">→ Konzentrieren Sie sich auf Ihre stärksten Antreiber und entwickeln Sie passende "Erlauber".</p>
+                        </div>
+                    </div>
+
+                    <div class="content-section" style="margin-top: 2rem;">
+                        <h3><i class="fas fa-arrow-right"></i> Nächste Schritte</h3>
+                        <div class="dimensions-grid">
+                            <div class="dimension-card">
+                                <div class="dimension-icon"><i class="fas fa-book-open"></i></div>
+                                <h4>Antreiber verstehen</h4>
+                                <p>Lernen Sie mehr über Ihre dominanten Antreiber</p>
+                                <a href="innere-antreiber-profile.html" style="color: var(--primary-color); font-weight: bold;">→ Zu den Profilen</a>
+                            </div>
+                            <div class="dimension-card">
+                                <div class="dimension-icon"><i class="fas fa-user-circle"></i></div>
+                                <h4>Fallbeispiel lesen</h4>
+                                <p>Wie Antreiber in der Kindheit entstehen</p>
+                                <a href="innere-antreiber-fallbeispiel.html" style="color: var(--primary-color); font-weight: bold;">→ Zum Fallbeispiel</a>
+                            </div>
+                            <div class="dimension-card">
+                                <div class="dimension-icon"><i class="fas fa-user-md"></i></div>
+                                <h4>Persönliche Beratung</h4>
+                                <p>Arbeiten Sie individuell mit Ihren Antreibern</p>
+                                <a href="https://www.eTermin.net/thomaslaggner" target="_blank" style="color: var(--primary-color); font-weight: bold;">→ Termin buchen</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-compact">
+        <div class="container">
+            <p>&copy; 2025 Thomas Laggner - Professionelle Hilfe | <a href="https://www.professionelle-hilfe.com">www.professionelle-hilfe.com</a></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // 50 Fragen (10 pro Antreiber)
+        const questions = [
+            // Sei perfekt! (10 Fragen)
+            {id: 1, text: "Ich achte sehr auf Details und Genauigkeit.", driver: "perfekt"},
+            {id: 2, text: "Ich kontrolliere meine Arbeit mehrfach.", driver: "perfekt"},
+            {id: 3, text: "Ich bin mit meinen Leistungen oft unzufrieden.", driver: "perfekt"},
+            {id: 4, text: "Fehler zu machen, belastet mich sehr.", driver: "perfekt"},
+            {id: 5, text: "Ich habe hohe Ansprüche an mich selbst.", driver: "perfekt"},
+            {id: 6, text: "Es fällt mir schwer, Aufgaben abzuschließen.", driver: "perfekt"},
+            {id: 7, text: "Ich bin sehr selbstkritisch.", driver: "perfekt"},
+            {id: 8, text: "Ich versuche, alles richtig zu machen.", driver: "perfekt"},
+            {id: 9, text: "Ich kann schwer delegieren.", driver: "perfekt"},
+            {id: 10, text: "Ich denke, es gibt immer noch etwas zu verbessern.", driver: "perfekt"},
+            
+            // Beeil dich! (10 Fragen)
+            {id: 11, text: "Ich bin oft unter Zeitdruck.", driver: "beeil"},
+            {id: 12, text: "Ich mache mehrere Dinge gleichzeitig.", driver: "beeil"},
+            {id: 13, text: "Ich bin ungeduldig.", driver: "beeil"},
+            {id: 14, text: "Mir fällt es schwer, innezuhalten.", driver: "beeil"},
+            {id: 15, text: "Ich habe das Gefühl, nie genug Zeit zu haben.", driver: "beeil"},
+            {id: 16, text: "Ich bin oft hektisch.", driver: "beeil"},
+            {id: 17, text: "Ich unterbreche andere häufig.", driver: "beeil"},
+            {id: 18, text: "Langsames Arbeiten frustriert mich.", driver: "beeil"},
+            {id: 19, text: "Ich denke, Schnelligkeit ist wichtig.", driver: "beeil"},
+            {id: 20, text: "Warten fällt mir schwer.", driver: "beeil"},
+            
+            // Streng dich an! (10 Fragen)
+            {id: 21, text: "Ich glaube, ohne Anstrengung erreiche ich nichts.", driver: "streng"},
+            {id: 22, text: "Ich wähle oft den schwierigeren Weg.", driver: "streng"},
+            {id: 23, text: "Erfolge erkenne ich nicht wirklich an.", driver: "streng"},
+            {id: 24, text: "Ich verkompliziere Dinge.", driver: "streng"},
+            {id: 25, text: "Ich habe Schwierigkeiten mit Leichtigkeit.", driver: "streng"},
+            {id: 26, text: "Ich denke, man muss sich durchbeißen.", driver: "streng"},
+            {id: 27, text: "Ich misstraue einfachen Lösungen.", driver: "streng"},
+            {id: 28, text: "Ich gebe nie auf, auch wenn es mühsam ist.", driver: "streng"},
+            {id: 29, text: "Fleiß ist für mich sehr wichtig.", driver: "streng"},
+            {id: 30, text: "Ich denke oft: 'Das war doch nichts Besonderes'.", driver: "streng"},
+            
+            // Mach es allen recht! (10 Fragen)
+            {id: 31, text: "'Nein' sagen fällt mir schwer.", driver: "recht"},
+            {id: 32, text: "Ich stelle meine Bedürfnisse zurück.", driver: "recht"},
+            {id: 33, text: "Ich vermeide Konflikte.", driver: "recht"},
+            {id: 34, text: "Ich möchte gemocht werden.", driver: "recht"},
+            {id: 35, text: "Ich kümmere mich zuerst um andere.", driver: "recht"},
+            {id: 36, text: "Ich übernehme oft zu viel.", driver: "recht"},
+            {id: 37, text: "Ich versuche, Erwartungen zu erfüllen.", driver: "recht"},
+            {id: 38, text: "Ich spüre die Bedürfnisse anderer sehr genau.", driver: "recht"},
+            {id: 39, text: "Ablehnung macht mir Angst.", driver: "recht"},
+            {id: 40, text: "Ich passe mich an, um Harmonie zu bewahren.", driver: "recht"},
+            
+            // Sei stark! (10 Fragen)
+            {id: 41, text: "Ich muss alleine zurechtkommen.", driver: "stark"},
+            {id: 42, text: "Ich zeige keine Schwäche.", driver: "stark"},
+            {id: 43, text: "Um Hilfe zu bitten, fällt mir schwer.", driver: "stark"},
+            {id: 44, text: "Ich halte meine Gefühle zurück.", driver: "stark"},
+            {id: 45, text: "Ich bewahre immer Haltung.", driver: "stark"},
+            {id: 46, text: "Ich bin auf das Schlimmste vorbereitet.", driver: "stark"},
+            {id: 47, text: "Ich halte Abstand zu anderen.", driver: "stark"},
+            {id: 48, text: "Ich sehe mich als Einzelkämpfer:in.", driver: "stark"},
+            {id: 49, text: "Ich will die Kontrolle behalten.", driver: "stark"},
+            {id: 50, text: "Verletzlichkeit zeigen ist für mich schwierig.", driver: "stark"}
+        ];
+
+        const driverInfo = {
+            perfekt: {
+                name: "Sei perfekt!",
+                icon: "fa-star",
+                subtitle: "Der Perfektionist",
+                description: "Sie haben hohe Ansprüche an sich selbst und achten sehr auf Details. Fehler zu machen belastet Sie."
+            },
+            beeil: {
+                name: "Beeil dich!",
+                icon: "fa-clock",
+                subtitle: "Der Getriebene",
+                description: "Sie stehen oft unter Zeitdruck und haben das Gefühl, sich beeilen zu müssen. Geduld fällt Ihnen schwer."
+            },
+            streng: {
+                name: "Streng dich an!",
+                icon: "fa-dumbbell",
+                subtitle: "Der Kämpfer",
+                description: "Sie glauben, dass Erfolg nur durch Anstrengung erreicht wird. Leichtigkeit zuzulassen fällt Ihnen schwer."
+            },
+            recht: {
+                name: "Mach es allen recht!",
+                icon: "fa-heart",
+                subtitle: "Der Harmonie-Suchende",
+                description: "Sie stellen Ihre eigenen Bedürfnisse zurück und möchten von anderen gemocht werden. 'Nein' sagen fällt Ihnen schwer."
+            },
+            stark: {
+                name: "Sei stark!",
+                icon: "fa-shield-alt",
+                subtitle: "Der Einzelkämpfer",
+                description: "Sie zeigen keine Schwäche und kommen alleine zurecht. Um Hilfe zu bitten fällt Ihnen schwer."
+            }
+        };
+
+        // Formular generieren
+        const form = document.getElementById('antreiberTestForm');
+        questions.forEach(q => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question-item';
+            questionDiv.innerHTML = `
+                <div class="question-header">
+                    <div class="question-number">${q.id}</div>
+                    <div class="question-text">${q.text}</div>
+                </div>
+                <div class="rating-scale">
+                    ${[0, 1, 2, 3, 4, 5].map(value => `
+                        <div class="rating-option">
+                            <input type="radio" name="q${q.id}" value="${value}" id="q${q.id}_${value}">
+                            <label for="q${q.id}_${value}">${value}</label>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="rating-labels">
+                    <span>nie</span>
+                    <span>immer</span>
+                </div>
+            `;
+            form.appendChild(questionDiv);
+        });
+
+        // Progress tracking
+        let answeredCount = 0;
+        const totalQuestions = 50;
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+        const evaluateBtn = document.getElementById('evaluateBtn');
+
+        form.addEventListener('change', function() {
+            answeredCount = 0;
+            questions.forEach(q => {
+                if (document.querySelector(`input[name="q${q.id}"]:checked`)) {
+                    answeredCount++;
+                }
+            });
+            
+            const percentage = (answeredCount / totalQuestions) * 100;
+            progressBar.style.width = percentage + '%';
+            progressText.textContent = `${answeredCount} von ${totalQuestions} Fragen beantwortet`;
+            
+            evaluateBtn.disabled = answeredCount < totalQuestions;
+            
+            // Speichere Antworten in LocalStorage
+            const answers = {};
+            questions.forEach(q => {
+                const selected = document.querySelector(`input[name="q${q.id}"]:checked`);
+                if (selected) {
+                    answers[q.id] = parseInt(selected.value);
+                }
+            });
+            localStorage.setItem('antreiber_test_answers_fritz', JSON.stringify(answers));
+        });
+
+        // Test auswerten
+        evaluateBtn.addEventListener('click', function() {
+            const scores = {
+                perfekt: 0,
+                beeil: 0,
+                streng: 0,
+                recht: 0,
+                stark: 0
+            };
+
+            questions.forEach(q => {
+                const answer = document.querySelector(`input[name="q${q.id}"]:checked`);
+                if (answer) {
+                    scores[q.driver] += parseInt(answer.value);
+                }
+            });
+
+            displayResults(scores);
+            document.getElementById('resultsSection').style.display = 'block';
+            document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+            
+            // Speichere Ergebnisse
+            localStorage.setItem('antreiber_test_results_fritz', JSON.stringify(scores));
+        });
+
+        function displayResults(scores) {
+            const resultsContainer = document.getElementById('resultsContainer');
+            resultsContainer.innerHTML = '';
+            
+            // Sortiere nach Punktzahl
+            const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+            const maxPossible = 50; // 10 Fragen × 5 Punkte maximum
+            
+            sorted.forEach(([driver, score], index) => {
+                const percentage = (score / maxPossible) * 100;
+                const info = driverInfo[driver];
+                
+                const card = document.createElement('div');
+                card.className = 'result-card';
+                card.style.borderLeft = `6px solid ${index === 0 ? 'var(--accent-color)' : 'var(--primary-color)'}`;
+                
+                card.innerHTML = `
+                    ${index < 3 ? `<div class="result-rank">${index + 1}</div>` : ''}
+                    <div class="result-header">
+                        <div class="result-icon"><i class="fas ${info.icon}"></i></div>
+                        <div class="result-title">
+                            <h3>${info.name}</h3>
+                            <p class="result-subtitle">${info.subtitle}</p>
+                        </div>
+                    </div>
+                    <div class="result-score-display">
+                        <div class="score-number">${score}</div>
+                        <div class="score-label">von maximal 50 Punkten</div>
+                    </div>
+                    <div class="result-bar">
+                        <div class="result-bar-fill" style="width: ${percentage}%">
+                            ${percentage.toFixed(0)}%
+                        </div>
+                    </div>
+                    <div class="interpretation">
+                        <h4>${index === 0 ? '⭐ Ihr stärkster Antreiber' : `Rang ${index + 1}`}</h4>
+                        <p>${info.description}</p>
+                        ${score >= 40 ? '<p style="margin-top:0.5rem;color:#d32f2f;"><strong>Hohe Ausprägung:</strong> Dieser Antreiber dominiert Ihr Verhalten stark. Achten Sie besonders auf gesunde Erlauber!</p>' : ''}
+                        ${score >= 20 && score < 40 ? '<p style="margin-top:0.5rem;color:#f57c00;"><strong>Mittlere Ausprägung:</strong> Dieser Antreiber ist präsent, aber ausbalanciert.</p>' : ''}
+                        ${score < 20 ? '<p style="margin-top:0.5rem;color:#388e3c;"><strong>Niedrige Ausprägung:</strong> Dieser Antreiber spielt eine untergeordnete Rolle in Ihrem Leben.</p>' : ''}
+                    </div>
+                `;
+                
+                resultsContainer.appendChild(card);
+            });
+        }
+
+        // Lade gespeicherte Antworten beim Laden
+        window.addEventListener('load', function() {
+            const saved = localStorage.getItem('antreiber_test_answers_fritz');
+            if (saved) {
+                const answers = JSON.parse(saved);
+                Object.keys(answers).forEach(qId => {
+                    const radio = document.querySelector(`input[name="q${qId}"][value="${answers[qId]}"]`);
+                    if (radio) {
+                        radio.checked = true;
+                    }
+                });
+                // Trigger change event to update progress
+                form.dispatchEvent(new Event('change'));
+            }
+        });
+    </script>
+</body>
+</html>

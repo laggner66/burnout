@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wöchentliche Reflexion: Work-Life-Balance bewerten, Erfolge feiern, Stresslevel tracken, Werte-Alignment prüfen. Interaktives Tool mit Auto-Save. Von Thomas Laggner.">
+    <meta name="keywords" content="wöchentliche Reflexion, Work-Life-Balance, Selbstreflexion, Stresslevel, Erfolgstracking, Werte-Alignment, persönliche Entwicklung">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.professionelle-hilfe.com/burnout-kurs/checkliste-wochenreflexion.html">
+    <title>Wöchentliche Reflexion: Work-Life-Balance & Selbstcheck | Thomas Laggner</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/module.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Wöchentliche Reflexion Checkliste",
+      "description": "Strukturierte Wochen-Reflexion zur Überprüfung von Work-Life-Balance, Stresslevel und persönlichen Erfolgen.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+      "inLanguage": "de-AT"
+    }
+    </script>
+</head>
+<body itemscope itemtype="https://schema.org/Article">
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="index.html"><span class="brand-name">Professionelle Hilfe</span></a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Kursübersicht</a></li>
+                <li><a href="modul9.html">← Zurück zu Ressourcen</a></li>
+                <li><a href="https://www.eTermin.net/thomaslaggner" target="_blank" class="btn-etermin-nav"><i class="fas fa-calendar-check"></i> Termin buchen</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="module-header">
+        <div class="container">
+            <div class="module-breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Kursübersicht</a><span>/</span>
+                <a href="modul9.html">Ressourcen</a><span>/</span>
+                <span>Wöchentliche Reflexion</span>
+            </div>
+            <h1>Checkliste: Wöchentliche Reflexion</h1>
+            <p class="module-intro">Nehmen Sie sich jeden Sonntag 15-20 Minuten Zeit für diese Reflexion</p>
+            <div class="module-meta">
+                <span><i class="fas fa-calendar-week"></i> Wöchentlich</span>
+                <span><i class="fas fa-print"></i> Druckbar</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="module-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <article class="main-content">
+                    <div class="content-section">
+                        <div class="info-box">
+                            <p><strong>Anleitung:</strong> Nehmen Sie sich jeden Sonntagabend Zeit, die vergangene Woche zu reflektieren. Seien Sie ehrlich zu sich selbst und nutzen Sie diese Reflexion für Ihre kontinuierliche Weiterentwicklung.</p>
+                        </div>
+
+                        <h2><i class="fas fa-star"></i> Erfolge der Woche</h2>
+                        <div class="reflection-box">
+                            <h4>Was ist mir diese Woche gut gelungen? Welche Erfolge habe ich erzielt?</h4>
+                            <textarea id="erfolge" placeholder="Listen Sie mindestens 3 Erfolge auf – auch kleine zählen!" rows="4"></textarea>
+                        </div>
+
+                        <h2><i class="fas fa-heartbeat"></i> Gesundheitscheck</h2>
+                        <div class="checklist-box">
+                            <h4>Wie habe ich mich diese Woche um meine Gesundheit gekümmert?</h4>
+                            <div class="checklist">
+                                <label><input type="checkbox"> Ausreichend geschlafen (durchschnittlich 7-8 Stunden)</label>
+                                <label><input type="checkbox"> Regelmäßige Bewegung (mindestens 3x)</label>
+                                <label><input type="checkbox"> Gesund ernährt</label>
+                                <label><input type="checkbox"> Pausen während der Arbeit gemacht</label>
+                                <label><input type="checkbox"> Zeit für Entspannung eingeplant</label>
+                                <label><input type="checkbox"> Soziale Kontakte gepflegt</label>
+                                <label><input type="checkbox"> Hobbys nachgegangen</label>
+                            </div>
+                        </div>
+
+                        <h2><i class="fas fa-balance-scale"></i> Work-Life-Balance</h2>
+                        <div class="reflection-box">
+                            <h4>Wie war meine Work-Life-Balance diese Woche? (Skala 1-10)</h4>
+                            <input type="range" min="1" max="10" value="5" id="balance-slider">
+                            <p style="text-align: center; font-weight: bold; font-size: 1.5rem;" id="balance-value">5/10</p>
+                            <textarea id="balance-text" placeholder="Was hat gut funktioniert? Was möchte ich ändern?" rows="3"></textarea>
+                        </div>
+
+                        <h2><i class="fas fa-exclamation-triangle"></i> Stressbelastung</h2>
+                        <div class="reflection-box">
+                            <h4>Wie hoch war mein Stresslevel diese Woche? (Skala 1-10)</h4>
+                            <input type="range" min="1" max="10" value="5" id="stress-slider">
+                            <p style="text-align: center; font-weight: bold; font-size: 1.5rem;" id="stress-value">5/10</p>
+                            <textarea id="stress-text" placeholder="Was waren die Hauptstressoren? Wie bin ich damit umgegangen?" rows="3"></textarea>
+                        </div>
+
+                        <h2><i class="fas fa-compass"></i> Werte & Ziele</h2>
+                        <div class="reflection-box">
+                            <h4>Habe ich diese Woche im Einklang mit meinen Werten gelebt?</h4>
+                            <textarea id="werte" placeholder="Welche meiner Werte konnte ich leben? Wo gab es Diskrepanzen?" rows="3"></textarea>
+                        </div>
+                        <div class="reflection-box">
+                            <h4>Welche Fortschritte habe ich bei meinen Zielen gemacht?</h4>
+                            <textarea id="ziele" placeholder="Konkrete Fortschritte bei meinen Zielen..." rows="3"></textarea>
+                        </div>
+
+                        <h2><i class="fas fa-tasks"></i> Planung für nächste Woche</h2>
+                        <div class="reflection-box">
+                            <h4>Was möchte ich nächste Woche erreichen/verbessern?</h4>
+                            <textarea id="naechste-woche" placeholder="1-3 konkrete Vorhaben für die kommende Woche..." rows="4"></textarea>
+                        </div>
+
+                        <h2><i class="fas fa-heart"></i> Dankbarkeit</h2>
+                        <div class="reflection-box">
+                            <h4>Wofür bin ich diese Woche dankbar?</h4>
+                            <textarea id="dankbarkeit" placeholder="Mindestens 5 Dinge, für die ich dankbar bin..." rows="4"></textarea>
+                            <p class="auto-save-note"><i class="fas fa-save"></i> Alle Eingaben werden automatisch gespeichert</p>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="key-takeaway">
+                            <h4><i class="fas fa-lightbulb"></i> Tipp zur Wochenreflexion</h4>
+                            <p>Machen Sie diese Reflexion zu einem festen Ritual. Wählen Sie einen ruhigen Zeitpunkt, an dem Sie nicht gestört werden. Mit der Zeit werden Sie Muster erkennen und können gezielt gegensteuern.</p>
+                        </div>
+                    </div>
+
+                    <div class="module-navigation">
+                        <a href="checkliste-selbstfuersorge.html" class="btn-nav btn-back"><i class="fas fa-arrow-left"></i> Selbstfürsorge</a>
+                        <button onclick="window.print()" class="btn-nav btn-complete"><i class="fas fa-print"></i> Reflexion drucken</button>
+                        <a href="checkliste-notfallplan.html" class="btn-nav btn-next">Nächste Checkliste <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="sidebar-card">
+                        <h3>Weitere Checklisten</h3>
+                        <ul class="module-list-small">
+                            <li><a href="checkliste-warnsignale.html">Warnsignale erkennen</a></li>
+                            <li><a href="checkliste-selbstfuersorge.html">Tägliche Selbstfürsorge</a></li>
+                            <li><a href="checkliste-notfallplan.html">Notfallplan</a></li>
+                            <li><a href="checkliste-aufschieberitis.html">Aufschieberitis</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-compact">
+        <div class="container">
+            <p>&copy; 2025 Thomas Laggner - Professionelle Hilfe | <a href="https://www.professionelle-hilfe.com">www.professionelle-hilfe.com</a></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Slider functionality
+        const balanceSlider = document.getElementById('balance-slider');
+        const balanceValue = document.getElementById('balance-value');
+        const stressSlider = document.getElementById('stress-slider');
+        const stressValue = document.getElementById('stress-value');
+        
+        balanceSlider.addEventListener('input', function() {
+            balanceValue.textContent = this.value + '/10';
+            localStorage.setItem('woche_balance', this.value);
+        });
+        
+        stressSlider.addEventListener('input', function() {
+            stressValue.textContent = this.value + '/10';
+            localStorage.setItem('woche_stress', this.value);
+        });
+        
+        // Load saved values
+        const savedBalance = localStorage.getItem('woche_balance');
+        const savedStress = localStorage.getItem('woche_stress');
+        if (savedBalance) {
+            balanceSlider.value = savedBalance;
+            balanceValue.textContent = savedBalance + '/10';
+        }
+        if (savedStress) {
+            stressSlider.value = savedStress;
+            stressValue.textContent = savedStress + '/10';
+        }
+        
+        // Auto-save textareas
+        const fields = ['erfolge', 'balance-text', 'stress-text', 'werte', 'ziele', 'naechste-woche', 'dankbarkeit'];
+        fields.forEach(field => {
+            const element = document.getElementById(field);
+            if (element) {
+                const saved = localStorage.getItem(`woche_${field}`);
+                if (saved) element.value = saved;
+                
+                let saveTimeout;
+                element.addEventListener('input', function() {
+                    clearTimeout(saveTimeout);
+                    saveTimeout = setTimeout(() => {
+                        localStorage.setItem(`woche_${field}`, this.value);
+                    }, 1000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

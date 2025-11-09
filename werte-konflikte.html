@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wertekonflikte erkennen und lösen: Praktischer Leitfaden zur Auflösung innerer Konflikte zwischen verschiedenen Werten. Teil der Burnout-Prävention.">
+    <meta name="keywords" content="Wertekonflikte, innere Konflikte, Werte Auflösung, Entscheidungsfindung, Prioritäten setzen, Burnout-Prävention">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.professionelle-hilfe.com/burnout-kurs/werte-konflikte.html">
+    <title>Wertekonflikte lösen | Praktische Strategien | Thomas Laggner</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/module.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <style>
+        .conflict-scenario {
+            background: white;
+            border: 2px solid #e74c3c;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .conflict-scenario h3 {
+            color: #e74c3c;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .conflict-icon {
+            background: #e74c3c;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .vs-badge {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin: 0 10px;
+        }
+        
+        .strategy-card {
+            background: linear-gradient(135deg, #f0fff4 0%, #e6f7ed 100%);
+            border-left: 5px solid #27ae60;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .strategy-card h4 {
+            color: #27ae60;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 0;
+        }
+        
+        .step-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: step-counter;
+        }
+        
+        .step-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 20px;
+        }
+        
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--primary-color);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .interactive-conflict {
+            background: #fff9f0;
+            border: 2px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .conflict-pair {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .value-box {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .conflict-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            margin-top: 10px;
+        }
+        
+        .conflict-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .resolution-framework {
+            background: white;
+            border: 2px solid #3498db;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        
+        .resolution-framework h4 {
+            color: #3498db;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 0;
+        }
+        
+        .question-box {
+            background: #f0f7ff;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .question-box strong {
+            color: #3498db;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .conflict-pair {
+                flex-direction: column;
+            }
+            
+            .vs-badge {
+                margin: 10px 0;
+            }
+        }
+    </style>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Wertekonflikte lösen: Praktische Strategien",
+      "description": "Leitfaden zur Erkennung und Auflösung von Wertekonflikten für bessere Entscheidungsfindung und Burnout-Prävention.",
+      "author": {
+        "@type": "Person",
+        "name": "Thomas Laggner",
+        "jobTitle": "Psychotherapeut"
+      },
+      "inLanguage": "de-AT",
+      "isPartOf": {
+        "@type": "Course",
+        "name": "Burnout-Prävention Online-Kurs"
+      }
+    }
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="index.html"><span class="brand-name">Burnout-Prävention</span></a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Kursübersicht</a></li>
+                <li><a href="werte-kompass.html">Werte-Kompass</a></li>
+                <li><a href="https://www.eTermin.net/thomaslaggner" target="_blank" class="btn-etermin-nav"><i class="fas fa-calendar-check"></i> Termin buchen</a></li>
+                <li><a href="https://www.professionelle-hilfe.com" class="btn-primary-nav">Hauptseite</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="module-header">
+        <div class="container">
+            <div class="module-breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Kursübersicht</a>
+                <span>/</span>
+                <a href="modul6.html">Modul 7 & 8</a>
+                <span>/</span>
+                <a href="werte-kompass.html">Werte-Kompass</a>
+                <span>/</span>
+                <span>Wertekonflikte</span>
+            </div>
+            <h1><i class="fas fa-balance-scale"></i> Wertekonflikte erkennen und lösen</h1>
+            <p class="module-intro">Strategien für den Umgang mit inneren Konflikten zwischen verschiedenen Werten</p>
+        </div>
+    </section>
+
+    <section class="module-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <article class="main-content">
+                    <div class="content-section">
+                        <h2><i class="fas fa-info-circle"></i> Was sind Wertekonflikte?</h2>
+                        
+                        <p>Wertekonflikte entstehen, wenn zwei oder mehr unserer wichtigen Werte <strong>in einer Situation nicht gleichzeitig erfüllt werden können</strong>. Sie sind eine häufige Ursache für innere Unruhe, Entscheidungsschwierigkeiten und Stress.</p>
+                        
+                        <div class="info-box">
+                            <h4><i class="fas fa-lightbulb"></i> Typische Anzeichen von Wertekonflikten</h4>
+                            <ul>
+                                <li>Sie zögern lange bei wichtigen Entscheidungen</li>
+                                <li>Sie fühlen sich hin- und hergerissen zwischen Optionen</li>
+                                <li>Unabhängig von der Entscheidung fühlen Sie sich unzufrieden</li>
+                                <li>Sie erleben innere Anspannung und Zweifel</li>
+                                <li>Sie bereuen Entscheidungen häufig im Nachhinein</li>
+                            </ul>
+                        </div>
+
+                        <h3><i class="fas fa-exclamation-triangle"></i> Häufige Wertekonflikte</h3>
+                        
+                        <div class="conflict-scenario">
+                            <h3><span class="conflict-icon">⚔️</span> Karriere <span class="vs-badge">VS</span> Familie</h3>
+                            <p><strong>Situation:</strong> Eine Beförderung erfordert mehr Arbeitszeit und Reisen, bedeutet aber auch bessere finanzielle Sicherheit für die Familie.</p>
+                            <p><strong>Konflikt:</strong> Der Wert "Erfolg" steht im Konflikt mit "Familie" und "Work-Life-Balance".</p>
+                        </div>
+
+                        <div class="conflict-scenario">
+                            <h3><span class="conflict-icon">⚔️</span> Ehrlichkeit <span class="vs-badge">VS</span> Harmonie</h3>
+                            <p><strong>Situation:</strong> Ein Freund fragt nach Ihrer ehrlichen Meinung zu einem sensiblen Thema.</p>
+                            <p><strong>Konflikt:</strong> Der Wert "Authentizität/Ehrlichkeit" steht im Konflikt mit "Harmonie" und "Rücksichtnahme".</p>
+                        </div>
+
+                        <div class="conflict-scenario">
+                            <h3><span class="conflict-icon">⚔️</span> Freiheit <span class="vs-badge">VS</span> Sicherheit</h3>
+                            <p><strong>Situation:</strong> Sie könnten sich selbstständig machen (mehr Freiheit), müssten aber den sicheren Arbeitsplatz aufgeben.</p>
+                            <p><strong>Konflikt:</strong> Der Wert "Freiheit/Unabhängigkeit" steht im Konflikt mit "Sicherheit" und "Stabilität".</p>
+                        </div>
+
+                        <div class="conflict-scenario">
+                            <h3><span class="conflict-icon">⚔️</span> Selbstfürsorge <span class="vs-badge">VS</span> Hilfsbereitschaft</h3>
+                            <p><strong>Situation:</strong> Ein Kollege bittet Sie um Hilfe bei einem dringenden Projekt, obwohl Sie selbst überlastet sind.</p>
+                            <p><strong>Konflikt:</strong> Der Wert "Gesundheit/Selbstfürsorge" steht im Konflikt mit "Hilfsbereitschaft" und "Loyalität".</p>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <h2><i class="fas fa-tools"></i> 5-Schritte-Methode zur Konfliktlösung</h2>
+                        
+                        <ul class="step-list">
+                            <li>
+                                <strong>Konflikt bewusst machen</strong>
+                                <p>Benennen Sie klar, welche Werte im Konflikt stehen. Schreiben Sie beide Werte auf und beschreiben Sie die konkrete Situation.</p>
+                            </li>
+                            <li>
+                                <strong>Beide Werte wertschätzen</strong>
+                                <p>Erkennen Sie an, dass <em>beide</em> Werte wichtig und berechtigt sind. Es gibt keinen "falschen" Wert. Der Konflikt entsteht durch die Situation, nicht durch Ihre Werte.</p>
+                            </li>
+                            <li>
+                                <strong>Priorität klären (situativ!)</strong>
+                                <p>Welcher Wert ist <strong>in dieser spezifischen Situation</strong> wichtiger? Wichtig: Es geht nicht um eine generelle Abwertung eines Wertes, sondern um eine situative Entscheidung.</p>
+                            </li>
+                            <li>
+                                <strong>Kreative Lösungen suchen</strong>
+                                <p>Gibt es eine Möglichkeit, <strong>beiden Werten gerecht zu werden</strong>? Oft lassen sich mit Kreativität Kompromisse oder sequentielle Lösungen finden.</p>
+                            </li>
+                            <li>
+                                <strong>Entscheiden und akzeptieren</strong>
+                                <p>Treffen Sie eine bewusste Entscheidung und <strong>akzeptieren Sie den temporären "Verlust"</strong> des zurückgestellten Wertes. Planen Sie, wie Sie diesem Wert zu einem späteren Zeitpunkt gerecht werden.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h2><i class="fas fa-lightbulb"></i> Lösungsstrategien</h2>
+                        
+                        <div class="strategy-card">
+                            <h4><i class="fas fa-clock"></i> Strategie 1: Zeitliche Trennung</h4>
+                            <p>Erfüllen Sie beide Werte zu <strong>unterschiedlichen Zeiten</strong>.</p>
+                            <p><strong>Beispiel:</strong> "Vormittags konzentriere ich mich auf Karriere (Erfolg), Nachmittage und Wochenenden gehören der Familie."</p>
+                        </div>
+
+                        <div class="strategy-card">
+                            <h4><i class="fas fa-puzzle-piece"></i> Strategie 2: Integration</h4>
+                            <p>Finden Sie Wege, wie <strong>beide Werte gemeinsam</strong> erfüllt werden können.</p>
+                            <p><strong>Beispiel:</strong> "Ich nehme meine Kinder mit zu beruflichen Veranstaltungen, wenn möglich" (Karriere + Familie).</p>
+                        </div>
+
+                        <div class="strategy-card">
+                            <h4><i class="fas fa-exchange-alt"></i> Strategie 3: Rhythmus</h4>
+                            <p>Wechseln Sie <strong>phasenweise</strong> den Fokus.</p>
+                            <p><strong>Beispiel:</strong> "Die nächsten 3 Monate Priorität auf Projekt X (Erfolg), danach 2 Wochen Urlaub (Familie, Erholung)."</p>
+                        </div>
+
+                        <div class="strategy-card">
+                            <h4><i class="fas fa-handshake"></i> Strategie 4: Kompromiss</h4>
+                            <p>Erfüllen Sie beide Werte <strong>zu 70-80%</strong> statt einen zu 100%.</p>
+                            <p><strong>Beispiel:</strong> "Ich nehme die Beförderung an, handle aber flexible Homeoffice-Tage aus" (Karriere + Familie).</p>
+                        </div>
+
+                        <div class="strategy-card">
+                            <h4><i class="fas fa-compass"></i> Strategie 5: Hierarchie klären</h4>
+                            <p>Definieren Sie eine <strong>klare Rangordnung</strong> Ihrer Werte für bestimmte Lebensbereiche.</p>
+                            <p><strong>Beispiel:</strong> "In gesundheitlichen Fragen hat Selbstfürsorge immer Vorrang vor Hilfsbereitschaft."</p>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <h2><i class="fas fa-question-circle"></i> Reflexionsfragen zur Konfliktlösung</h2>
+                        
+                        <div class="resolution-framework">
+                            <h4><i class="fas fa-search"></i> Analysieren Sie Ihren Wertekonflikt</h4>
+                            
+                            <div class="question-box">
+                                <strong>1. Welche beiden (oder mehr) Werte stehen bei mir gerade im Konflikt?</strong>
+                                <textarea class="conflict-textarea" id="question1" placeholder="Ihre Antwort..."></textarea>
+                            </div>
+                            
+                            <div class="question-box">
+                                <strong>2. In welcher konkreten Situation zeigt sich dieser Konflikt?</strong>
+                                <textarea class="conflict-textarea" id="question2" placeholder="Beschreiben Sie die Situation..."></textarea>
+                            </div>
+                            
+                            <div class="question-box">
+                                <strong>3. Was würde passieren, wenn ich Wert A priorisiere? Und wenn ich Wert B priorisiere?</strong>
+                                <textarea class="conflict-textarea" id="question3" placeholder="Konsequenzen beider Optionen..."></textarea>
+                            </div>
+                            
+                            <div class="question-box">
+                                <strong>4. Gibt es eine kreative Lösung, die beiden Werten gerecht wird?</strong>
+                                <textarea class="conflict-textarea" id="question4" placeholder="Ihre Ideen für eine Kompromisslösung..."></textarea>
+                            </div>
+                            
+                            <div class="question-box">
+                                <strong>5. Welcher Wert ist mir IN DIESER SITUATION wichtiger – und warum?</strong>
+                                <textarea class="conflict-textarea" id="question5" placeholder="Ihre Priorisierung und Begründung..."></textarea>
+                            </div>
+                            
+                            <div class="question-box">
+                                <strong>6. Wie kann ich dem zurückgestellten Wert später gerecht werden?</strong>
+                                <textarea class="conflict-textarea" id="question6" placeholder="Ihr Plan für den zurückgestellten Wert..."></textarea>
+                            </div>
+                            
+                            <p class="auto-save-note"><i class="fas fa-save"></i> Ihre Antworten werden automatisch gespeichert</p>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="tip-box">
+                            <h4><i class="fas fa-heart"></i> Wichtig zu verstehen</h4>
+                            <p><strong>Wertekonflikte sind normal und unvermeidbar!</strong> Sie sind kein Zeichen von Charakterschwäche oder falschen Werten. Im Gegenteil: Menschen mit klaren Werten erleben häufiger Konflikte, weil ihnen vieles wichtig ist.</p>
+                            <p>Der entscheidende Unterschied liegt darin, <strong>wie bewusst und konstruktiv</strong> Sie mit diesen Konflikten umgehen. Ungelöste Wertekonflikte führen zu chronischem Stress und können Burnout begünstigen.</p>
+                        </div>
+                    </div>
+
+                    <div class="module-navigation">
+                        <a href="werte-kompass.html" class="btn-nav btn-back"><i class="fas fa-arrow-left"></i> Zurück zum Werte-Kompass</a>
+                        <a href="werte-quadrat.html" class="btn-nav btn-next">Werte-Quadrat <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="sidebar-card">
+                        <h3>💡 Auf dieser Seite</h3>
+                        <ul class="sidebar-links">
+                            <li><a href="#konflikte">Was sind Wertekonflikte?</a></li>
+                            <li><a href="#methode">5-Schritte-Methode</a></li>
+                            <li><a href="#strategien">Lösungsstrategien</a></li>
+                            <li><a href="#reflexion">Reflexionsfragen</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-card cta-card">
+                        <h3>Unterstützung bei Wertekonflikten</h3>
+                        <p>Schwierige Entscheidungen? Lassen Sie uns gemeinsam Klarheit schaffen!</p>
+                        <a href="https://www.eTermin.net/thomaslaggner" target="_blank" class="btn-cta"><i class="fas fa-calendar-alt"></i> Beratungstermin buchen</a>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3>🔗 Werte-Ressourcen</h3>
+                        <ul class="sidebar-links">
+                            <li><a href="werte-kompass.html">Werte-Kompass</a></li>
+                            <li><a href="werte-quadrat.html">Werte-Quadrat</a></li>
+                            <li><a href="modul6.html">Zurück zu Modul 7 & 8</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-compact">
+        <div class="container">
+            <p>&copy; 2025 Thomas Laggner - Professionelle Hilfe | <a href="https://www.professionelle-hilfe.com">www.professionelle-hilfe.com</a></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // LocalStorage für alle Reflexionsfragen
+        const STORAGE_KEY_PREFIX = 'werte_konflikte_';
+        
+        // Auto-save für alle Textareas
+        document.querySelectorAll('.conflict-textarea').forEach(textarea => {
+            const questionId = textarea.id;
+            const storageKey = STORAGE_KEY_PREFIX + questionId;
+            
+            // Lade gespeicherten Text
+            const savedText = localStorage.getItem(storageKey);
+            if (savedText) {
+                textarea.value = savedText;
+            }
+            
+            // Auto-save mit Debounce
+            let saveTimeout;
+            textarea.addEventListener('input', function() {
+                clearTimeout(saveTimeout);
+                saveTimeout = setTimeout(() => {
+                    localStorage.setItem(storageKey, this.value);
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
